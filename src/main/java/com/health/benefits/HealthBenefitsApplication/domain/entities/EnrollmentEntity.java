@@ -2,9 +2,9 @@ package com.health.benefits.HealthBenefitsApplication.domain.entities;
 
 
 
-import com.health.benefits.HealthBenefitsApplication.domain.entities.Dependent;
-import com.health.benefits.HealthBenefitsApplication.domain.entities.Employee;
-import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenefitsPlan;
+import com.health.benefits.HealthBenefitsApplication.domain.entities.DependentEntity;
+import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
+import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenefitPlanEntity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,10 +28,10 @@ public class EnrollmentEntity{
 
 
 				private String enrollment_id;
-				private Employee linked_employee;
-				private HealthBenefitPlan plan_id; 
+				private EmployeeEntity linked_employee;
+				private HealthBenefitPlanEntity plan_id; 
 				private CoverageLE coverage; 
-				private Dependent dependent;
+				private DependentEntity dependent;
 				private LocalDate enrollment_date;
 				private EnrollmentStatus enrollment_status;
 }

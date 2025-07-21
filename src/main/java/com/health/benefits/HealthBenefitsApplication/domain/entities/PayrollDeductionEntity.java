@@ -1,8 +1,8 @@
 package com.health.benefits.HealthBenefitsApplication.domain.entities;
 
 
-import com.health.benefits.HealthBenefitsApplication.domain.entities.Employee;
-import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenefitsPlan;
+import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
+import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenefitPlanEntity;
 import com.health.benefits.HealthBenefitsApplication.enums.DeductionFrequency;
 
 import java.time.LocalDate;
@@ -24,8 +24,8 @@ public class PayrollDeductionEntity{
 
 
 			private String deduction_id;
-			private Employee emp_id;
-			private HealthBenefitPlan plan_id;
+			private EmployeeEntity emp_id;
+			private HealthBenefitPlanEntity plan_id;
 			private Double deduction_amount;
 			private DeductionFrequency frequency;
 			private LocalDate start_date;
