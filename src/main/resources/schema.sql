@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS "payrolldeduction";
 DROP TABLE IF EXISTS "carrier";
 
 CREATE TABLE "employee"(
-   employee_id text NOT NULL, 
+   employee_id text PRIMARY KEY, 
    name text NOT NULL, 
    email text, 
    dateOfBirth text, 
@@ -23,7 +23,7 @@ CREATE TABLE "employee"(
 
 CREATE TABLE "carrier"(
 
-         carrier_id bigint NOT NULL,
+         carrier_id bigint PRIMARY KEY,
          name TEXT NOT NULL,
          contact TEXT,
           edi_support boolean,
@@ -34,7 +34,7 @@ CREATE TABLE "carrier"(
 
 CREATE TABLE "healthbenefitplan"(
 
-   plan_id text NOT NULL, 
+   plan_id text PRIMARY KEY, 
    plan_type text NOT NULL, 
    carrier_id bigint, 
    coverage text,
@@ -52,7 +52,7 @@ REFERENCES  carrier(carrier_id)
 );
 CREATE TABLE "eoi"(
 
-   eoi_id TEXT NOT NULL,
+   eoi_id TEXT PRIMARY KEY,
    emp_id TEXT NOT NULL,
    plan_id TEXT ,
    status TEXT ,
@@ -64,7 +64,7 @@ CREATE TABLE "eoi"(
 );
 
 CREATE TABLE "dependent"(
-   dependent_id TEXT NOT NULL, 
+   dependent_id TEXT PRIMARY KEY, 
    name TEXT, 
    relationship TEXT,
    date_of_birth DATE,
@@ -76,7 +76,7 @@ CREATE TABLE "dependent"(
 
 CREATE TABLE "enrollment"(
 
-   enrollment_id text NOT NULL, 
+   enrollment_id text PRIMARY KEY, 
    linked_employee text,
    plan_id text, 
    coverage text, 
