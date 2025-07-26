@@ -9,14 +9,20 @@ import com.health.benefits.HealthBenefitsApplication.enums.CoverageLE;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
+@Table(name = "healthbenefitplan") 
 public class HealthBenefitPlanEntity{
 
-
+				@Id
 				private String plan_id; 
 				private String plan_type; 
 				private String carrier;

@@ -8,7 +8,9 @@ import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenef
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 import com.health.benefits.HealthBenefitsApplication.enums.CoverageLE;
 import com.health.benefits.HealthBenefitsApplication.enums.NetworkType;
 import com.health.benefits.HealthBenefitsApplication.enums.EnrollmentStatus;
@@ -23,10 +25,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
+@Table(name = "enrollments")
 public class EnrollmentEntity{
 
 
-
+				@Id
 				private String enrollment_id;
 				private EmployeeEntity linked_employee;
 				private HealthBenefitPlanEntity plan_id; 
