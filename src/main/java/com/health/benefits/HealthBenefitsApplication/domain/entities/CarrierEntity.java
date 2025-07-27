@@ -22,8 +22,8 @@ public class CarrierEntity{
 
 		@Id
 		private String carrier_id;
-		private String name;
-		private String contact;
-		private Boolean edi_support;
-		private String api_endpoint;
+		// private String name;
+		// private String contact;
+		// private Boolean edi_support;
+		// private String api_endpoint;
 }

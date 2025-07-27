@@ -28,10 +28,10 @@ public class PayrollDeductionEntity{
 
 			@Id
 			private String deduction_id;
-			private EmployeeEntity emp_id;
-			private HealthBenefitPlanEntity plan_id;
-			private Double deduction_amount;
-			private DeductionFrequency frequency;
-			private LocalDate start_date;
-			private LocalDate end_date; 
+			// private EmployeeEntity emp_id;
+			// private HealthBenefitPlanEntity plan_id;
+			// private Double deduction_amount;
+			// private DeductionFrequency frequency;
+			// private LocalDate start_date;
+			// private LocalDate end_date; 
 }

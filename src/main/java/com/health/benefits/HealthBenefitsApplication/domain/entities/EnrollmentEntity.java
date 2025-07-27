@@ -2,7 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.domain.entities;
 
 
 
-import com.health.benefits.HealthBenefitsApplication.domain.entities.DependentEntity;
+// import com.health.benefits.HealthBenefitsApplication.domain.entities.DependentEntity;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenefitPlanEntity;
 import java.time.LocalDate;
@@ -32,10 +32,10 @@ public class EnrollmentEntity{
 
 				@Id
 				private String enrollment_id;
-				private EmployeeEntity linked_employee;
-				private HealthBenefitPlanEntity plan_id; 
-				private CoverageLE coverage; 
-				private DependentEntity dependent;
-				private LocalDate enrollment_date;
-				private EnrollmentStatus enrollment_status;
+				// private EmployeeEntity linked_employee;
+				// private HealthBenefitPlanEntity plan_id; 
+				// private CoverageLE coverage; 
+				// private String dependent;
+				// private LocalDate enrollment_date;
+				// private EnrollmentStatus enrollment_status;
 }
