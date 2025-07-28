@@ -11,6 +11,13 @@ import java.time.format.DateTimeFormatter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.CascadeType;
 import com.health.benefits.HealthBenefitsApplication.enums.CoverageLE;
 import com.health.benefits.HealthBenefitsApplication.enums.NetworkType;
 import com.health.benefits.HealthBenefitsApplication.enums.EnrollmentStatus;
@@ -30,12 +37,18 @@ import lombok.NoArgsConstructor;
 public class EnrollmentEntity{
 
 
-				@Id
-				private String enrollment_id;
-				// private EmployeeEntity linked_employee;
-				// private HealthBenefitPlanEntity plan_id; 
-				// private CoverageLE coverage; 
-				// private String dependent;
-				// private LocalDate enrollment_date;
-				// private EnrollmentStatus enrollment_status;
+					@Id
+					private String enrollment_id;
+					@OneToOne(cascade = CascadeType.ALL)
+					@JoinColumn
+					private EmployeeEntity linked_employee;
+				   	@OneToOne(cascade = CascadeType.ALL)
+				  	@JoinColumn
+					private HealthBenefitPlanEntity plan_id;
+				    @Enumerated(EnumType.STRING) 
+				    private CoverageLE coverage; 
+				    private String dependent;
+				    private LocalDate enrollment_date;
+				    @Enumerated(EnumType.STRING)
+				    private EnrollmentStatus enrollment_status;
 }
