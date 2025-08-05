@@ -7,4 +7,4 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface DependentRepository extends CrudRepository<DependentsEntity,String>{}
+public interface DependentRepository extends CrudRepository<DependentsEntity,Long>{}

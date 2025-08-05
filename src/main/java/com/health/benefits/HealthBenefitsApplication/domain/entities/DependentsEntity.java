@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class DependentsEntity{
 
 	@Id
-	String dependent_id;
+	Long dependent_id;
 	String name; 
 	@Enumerated(EnumType.STRING)
 	DependentRelationship relationship;
