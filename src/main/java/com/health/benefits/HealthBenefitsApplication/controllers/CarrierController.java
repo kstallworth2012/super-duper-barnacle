@@ -2,31 +2,34 @@ package com.health.benefits.HealthBenefitsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.mega.parts.MegaPartsApplication.domain.entities._____Entity;
-import com.mega.parts.MegaPartsApplication.repositories._____Repository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import com.health.benefits.HealthBenefitsApplication.domain.entities.CarrierEntity;
+import com.health.benefits.HealthBenefitsApplication.repositories.CarrierRepository;
 
 @RestController
-@RequestMapping("/api/warehouse")
+@RequestMapping("/api/carriers")
 public class CarrierController{
 
 
-		private final _______Repository ____Repository;
+		private final CarrierRepository carrierRepository;
 
-    public _______Controller(____Repository _Repository) {
-        this._____Repository = ____Repository;
+    public CarrierController(CarrierRepository _carrierRepository) {
+        this.carrierRepository = _carrierRepository;
     }
 
 
     // Read All
     @GetMapping
-    public Iterable<_____Entity> getAll_____() {
-        return _____Repository.findAll();
+    public Iterable<CarrierEntity> getAllCarriers() {
+        return carrierRepository.findAll();
     }
 
     // Read One
     @GetMapping("/{id}")
-    public ResponseEntity<_____Entity> get_____ById(@PathVariable Long id) {
-        return inventoryRepository.findById(id)
+    public ResponseEntity<CarrierEntity> getCarrierById(@PathVariable String id) {
+        return carrierRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
