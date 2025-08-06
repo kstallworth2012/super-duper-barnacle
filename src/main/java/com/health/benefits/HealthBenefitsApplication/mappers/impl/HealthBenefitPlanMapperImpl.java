@@ -1,11 +1,15 @@
 package com.health.benefits.HealthBenefitsApplication.mappers.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.HealthBenefitPlanDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenefitPlanEntity;
 import com.health.benefits.HealthBenefitsApplication.mappers.Mapper;
 
+
+
+@Component
 public class HealthBenefitPlanMapperImpl implements Mapper<HealthBenefitPlanEntity, HealthBenefitPlanDTO> {
 
 	

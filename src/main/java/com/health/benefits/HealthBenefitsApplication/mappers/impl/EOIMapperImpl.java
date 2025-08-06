@@ -1,11 +1,14 @@
 package com.health.benefits.HealthBenefitsApplication.mappers.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.EoiDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EOIEntity;
 import com.health.benefits.HealthBenefitsApplication.mappers.Mapper;
 
+
+@Component
 public class EOIMapperImpl implements Mapper<EOIEntity, EoiDTO> {
 
 	

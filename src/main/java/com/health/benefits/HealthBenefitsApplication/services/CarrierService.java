@@ -1,5 +1,8 @@
 package com.health.benefits.HealthBenefitsApplication.services;
 
-public interface CarrierService {
+import com.health.benefits.HealthBenefitsApplication.domain.entities.CarrierEntity;
 
+public interface CarrierService {
+		
+		CarrierEntity createCarrier(CarrierEntity _carrier);
 }

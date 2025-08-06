@@ -1,18 +1,17 @@
 package com.health.benefits.HealthBenefitsApplication.mappers.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.PayrollDeductionDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.PayrollDeductionEntity;
 import com.health.benefits.HealthBenefitsApplication.mappers.Mapper;
 
+
+@Component
 public class PayrollDeductionMapperImpl implements Mapper<PayrollDeductionEntity, PayrollDeductionDTO> {
 
 	private ModelMapper modelMapper;
-	
-	
-	
-	
 	
 	public PayrollDeductionMapperImpl(ModelMapper modelMapper) {
 			this.modelMapper = modelMapper;

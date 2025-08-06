@@ -12,8 +12,26 @@ import com.health.benefits.HealthBenefitsApplication.repositories.CarrierReposit
 @RequestMapping("/api/carriers")
 public class CarrierController{
 
-
-		private final CarrierRepository carrierRepository;
+	//private CarrierService carrierService;
+	//private Mapper<CarrierEntity, CarrierDTO> carrierMapper;
+	/*
+	     public CarrierController(CarrierService _carrierService,Mapper<CarrierEntity, CarrierDTO> _carrierMapper){
+	           this.carrierService = _carrierService;
+	           this.carrierMapper = _carrierMapper;
+	     }
+	     
+	     
+	     @PostMapping
+	     public CarrierDTO(@RequestBody CarrierDTO _carrierDTO){
+	          
+	     			CarrierEntity carrierEntity = carrierMapper.mapFrom(_carrierDTO);
+	     	     	CarrierEntity savedCarrierEntity = carrierService.createCarrier(carrierEntity);
+	     	     	return carrierMapper.mapTo(savedCarrierEntity);
+	     }
+	 */
+	
+	
+	private final CarrierRepository carrierRepository;
 
     public CarrierController(CarrierRepository _carrierRepository) {
         this.carrierRepository = _carrierRepository;
