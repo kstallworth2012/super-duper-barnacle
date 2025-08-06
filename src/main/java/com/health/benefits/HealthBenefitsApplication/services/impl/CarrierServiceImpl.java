@@ -1,9 +1,18 @@
 package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import com.health.benefits.HealthBenefitsApplication.domain.entities.CarrierEntity;
+import com.health.benefits.HealthBenefitsApplication.repositories.CarrierRepository;
 import com.health.benefits.HealthBenefitsApplication.services.CarrierService;
 
 public class CarrierServiceImpl implements CarrierService {
+
+	
+	private CarrierRepository carrierRepository;
+
+	public CarrierServiceImpl(CarrierRepository carrierRepository) {
+		super();
+		this.carrierRepository = carrierRepository;
+	}
 
 	@Override
 	public CarrierEntity createCarrier(CarrierEntity _carrier) {
