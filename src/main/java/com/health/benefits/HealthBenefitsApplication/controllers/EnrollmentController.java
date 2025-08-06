@@ -9,7 +9,7 @@ import com.health.benefits.HealthBenefitsApplication.domain.entities.EnrollmentE
 import com.health.benefits.HealthBenefitsApplication.repositories.EnrollmentRepository;
 
 @RestController
-@RequestMapping("/api/warehouse")
+@RequestMapping("/api/enrollments")
 public class EnrollmentController{
 
 
