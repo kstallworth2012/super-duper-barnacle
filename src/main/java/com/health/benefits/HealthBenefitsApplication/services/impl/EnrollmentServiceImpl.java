@@ -1,10 +1,12 @@
 package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
+import com.health.benefits.HealthBenefitsApplication.domain.entities.EnrollmentEntity;
 import com.health.benefits.HealthBenefitsApplication.repositories.EnrollmentRepository;
 import com.health.benefits.HealthBenefitsApplication.services.EmployeeService;
+import com.health.benefits.HealthBenefitsApplication.services.EnrollmentService;
 
-public class EnrollmentServiceImpl implements EmployeeService {
+public class EnrollmentServiceImpl implements EnrollmentService {
 
 	
 	private EnrollmentRepository enrollmentRepository;
@@ -15,9 +17,12 @@ public class EnrollmentServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public EmployeeEntity createEmployee(EmployeeEntity _employee) {
+	public EnrollmentEntity createEnrollment(EnrollmentEntity _enrollment) {
 		// TODO Auto-generated method stub
-		return null;
+		return enrollmentRepository.save(_enrollment);
+
 	}
+
+
 
 }

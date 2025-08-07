@@ -23,7 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public EmployeeEntity createEmployee(EmployeeEntity _employee) {
 		// TODO Auto-generated method stub
-		return null;
+		return employeeRepository.save(_employee);
 	}
 
 }

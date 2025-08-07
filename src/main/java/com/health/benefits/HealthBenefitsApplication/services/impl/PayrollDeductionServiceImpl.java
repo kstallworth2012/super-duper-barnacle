@@ -22,7 +22,7 @@ public class PayrollDeductionServiceImpl implements PayrollDeductionService {
 	@Override
 	public PayrollDeductionEntity createPayrollDeduction(PayrollDeductionEntity _payrollDeduction) {
 		// TODO Auto-generated method stub
-		return null;
+		return payrollDeductionRepository.save(_payrollDeduction);
 	}
 
 }

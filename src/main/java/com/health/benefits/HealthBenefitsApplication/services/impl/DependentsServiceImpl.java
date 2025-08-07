@@ -17,7 +17,7 @@ public class DependentsServiceImpl implements DependentsService {
 	@Override
 	public DependentsEntity createDependent(DependentsEntity _dependents) {
 		// TODO Auto-generated method stub
-		return null;
+		return dependentsRepository.save(_dependents);
 	}
 
 }

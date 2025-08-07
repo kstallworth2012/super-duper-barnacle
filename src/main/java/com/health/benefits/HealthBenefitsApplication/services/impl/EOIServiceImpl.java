@@ -18,7 +18,7 @@ public class EOIServiceImpl implements EOIService {
 	@Override
 	public EOIEntity createEOI(EOIEntity _eoi) {
 		// TODO Auto-generated method stub
-		return null;
+		return eoiRepository.save(_eoi);
 	}
 
 }
