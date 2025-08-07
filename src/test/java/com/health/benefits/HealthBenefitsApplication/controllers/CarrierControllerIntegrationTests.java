@@ -47,7 +47,7 @@ public class CarrierControllerIntegrationTests {
 									.contentType(MediaType.APPLICATION_JSON)
 									.content(carrierJson)
 						).andExpect(
-				                MockMvcResultMatchers.jsonPath("$.name").value("hif5"));
+				                MockMvcResultMatchers.jsonPath("$.carrier_id").value("hif5"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

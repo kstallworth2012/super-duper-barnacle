@@ -8,8 +8,7 @@ public final class TestDataUtil {
 	private TestDataUtil() {}
 	
 	public static CarrierEntity createTestCarrierEntityA() {
-		 CarrierEntity carrier = CarrierEntity.builder()
-				.name("hif5").build();
+		 CarrierEntity carrier = CarrierEntity.builder().carrier_id("hif5").build();
 				return carrier;
 	}
 }

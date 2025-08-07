@@ -3,6 +3,11 @@ package com.health.benefits.HealthBenefitsApplication.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,13 +31,18 @@ public class CarrierController{
 	           this.carrierMapper = _carrierMapper;
 	     }
 	     
+	     @GetMapping(path = "/all")
+	     public List<CarrierDTO> listCarriers(){
+	    	 List<CarrierEntity> carriers = carrierService.findAll();
+	    	 return carriers.stream().map(carrierMapper::mapTo).collect(Collectors.toList());
+	    			 }
 	     
 	     @PostMapping(path = "/new-carrier")
-	     public CarrierDTO createCarrier(@RequestBody CarrierDTO _carrierDTO){
+	     public ResponseEntity<CarrierDTO> createCarrier(@RequestBody CarrierDTO _carrierDTO){
 	          
 	     			CarrierEntity carrierEntity = carrierMapper.mapFrom(_carrierDTO);
 	     	     	CarrierEntity savedCarrierEntity = carrierService.createCarrier(carrierEntity);
-	     	     	return carrierMapper.mapTo(savedCarrierEntity);
+	     	     	return new ResponseEntity<>(carrierMapper.mapTo(savedCarrierEntity), HttpStatus.CREATED);
 	     }
 	 
 	

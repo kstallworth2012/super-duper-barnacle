@@ -1,5 +1,9 @@
 package com.health.benefits.HealthBenefitsApplication.services.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import org.springframework.stereotype.Service;
 
 import com.health.benefits.HealthBenefitsApplication.domain.entities.CarrierEntity;
@@ -21,6 +25,12 @@ public class CarrierServiceImpl implements CarrierService {
 	public CarrierEntity createCarrier(CarrierEntity _carrier) {
 		// TODO Auto-generated method stub
 		return carrierRepository.save(_carrier);
+	}
+
+	@Override
+	public List<CarrierEntity> findAll() {
+		// TODO Auto-generated method stub
+		return StreamSupport.stream(carrierRepository.findAll().spliterator(),false).collect(Collectors.toList());
 	}
 
 }
