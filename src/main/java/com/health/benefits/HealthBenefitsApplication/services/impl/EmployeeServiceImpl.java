@@ -1,9 +1,13 @@
 package com.health.benefits.HealthBenefitsApplication.services.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
 import com.health.benefits.HealthBenefitsApplication.repositories.EmployeeRepository;
 import com.health.benefits.HealthBenefitsApplication.services.EmployeeService;
 
+
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
 	

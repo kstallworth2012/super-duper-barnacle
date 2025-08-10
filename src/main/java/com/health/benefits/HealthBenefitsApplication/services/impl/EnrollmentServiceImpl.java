@@ -1,11 +1,15 @@
 package com.health.benefits.HealthBenefitsApplication.services.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EnrollmentEntity;
 import com.health.benefits.HealthBenefitsApplication.repositories.EnrollmentRepository;
 import com.health.benefits.HealthBenefitsApplication.services.EmployeeService;
 import com.health.benefits.HealthBenefitsApplication.services.EnrollmentService;
 
+
+@Service
 public class EnrollmentServiceImpl implements EnrollmentService {
 
 	

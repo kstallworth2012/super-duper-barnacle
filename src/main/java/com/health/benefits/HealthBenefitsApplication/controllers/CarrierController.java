@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -31,11 +32,21 @@ public class CarrierController{
 	           this.carrierMapper = _carrierMapper;
 	     }
 	     
-	     @GetMapping(path = "/all")
+	     @GetMapping(path = "/")
 	     public List<CarrierDTO> listCarriers(){
 	    	 List<CarrierEntity> carriers = carrierService.findAll();
 	    	 return carriers.stream().map(carrierMapper::mapTo).collect(Collectors.toList());
 	    			 }
+	     
+	     @GetMapping(path = "/{id}")
+	     public ResponseEntity<CarrierDTO> getCarrier(@PathVariable("carrier_id") String id){
+	    	 Optional<CarrierEntity> foundCarrier = carrierService.findOne(id);
+	    	 return foundCarrier.map(carrierEntity ->{
+	    		 CarrierDTO carrierDTO = carrierMapper.mapTo(carrierEntity);
+	    		 return new ResponseEntity<>(carrierDTO, HttpStatus.OK);
+	    	 
+	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	     }
 	     
 	     @PostMapping(path = "/new-carrier")
 	     public ResponseEntity<CarrierDTO> createCarrier(@RequestBody CarrierDTO _carrierDTO){

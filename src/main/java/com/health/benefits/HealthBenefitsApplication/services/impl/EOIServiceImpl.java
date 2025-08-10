@@ -1,9 +1,13 @@
 package com.health.benefits.HealthBenefitsApplication.services.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EOIEntity;
 import com.health.benefits.HealthBenefitsApplication.repositories.EOIRepository;
 import com.health.benefits.HealthBenefitsApplication.services.EOIService;
 
+
+@Service
 public class EOIServiceImpl implements EOIService {
 
 	
