@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.CarrierDTO;
@@ -38,7 +39,7 @@ public class CarrierController{
 	    	 return carriers.stream().map(carrierMapper::mapTo).collect(Collectors.toList());
 	    			 }
 	     
-	     @GetMapping(path = "/{id}")
+	     @GetMapping(path = "/{carrier_id}")
 	     public ResponseEntity<CarrierDTO> getCarrier(@PathVariable("carrier_id") String id){
 	    	 Optional<CarrierEntity> foundCarrier = carrierService.findOne(id);
 	    	 return foundCarrier.map(carrierEntity ->{
@@ -52,10 +53,25 @@ public class CarrierController{
 	     public ResponseEntity<CarrierDTO> createCarrier(@RequestBody CarrierDTO _carrierDTO){
 	          
 	     			CarrierEntity carrierEntity = carrierMapper.mapFrom(_carrierDTO);
-	     	     	CarrierEntity savedCarrierEntity = carrierService.createCarrier(carrierEntity);
+	     	     	CarrierEntity savedCarrierEntity = carrierService.save(carrierEntity);
 	     	     	return new ResponseEntity<>(carrierMapper.mapTo(savedCarrierEntity), HttpStatus.CREATED);
 	     }
 	 
+	     @PutMapping(path = "/{carrier_id}")
+	     public ResponseEntity<CarrierDTO> fullUpdateCarrier(@PathVariable("carrier_id") String id,
+	    		 @RequestBody CarrierDTO carrierDTO){
+	    	 CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO);
+	         boolean carrierExists = carrierService.isExists(id);
+	         CarrierEntity savedBookEntity = carrierService.createUpdateCarrier(isbn, bookEntity);
+	         CarrierDTO savedUpdatedBookDto = carrierMapper.mapTo(savedBookEntity);
+
+	         if(carrierExists){
+	             return new ResponseEntity(savedUpdatedBookDto, HttpStatus.OK);
+	         } else {
+	             return new ResponseEntity(savedUpdatedBookDto, HttpStatus.CREATED);
+	         }
+	     }
+	     
 	
 	/*
 	private final CarrierRepository carrierRepository;

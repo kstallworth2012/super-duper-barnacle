@@ -1,6 +1,7 @@
 package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -22,7 +23,7 @@ public class CarrierServiceImpl implements CarrierService {
 	}
 
 	@Override
-	public CarrierEntity createCarrier(CarrierEntity _carrier) {
+	public CarrierEntity save(CarrierEntity _carrier) {
 		// TODO Auto-generated method stub
 		return carrierRepository.save(_carrier);
 	}
@@ -31,6 +32,18 @@ public class CarrierServiceImpl implements CarrierService {
 	public List<CarrierEntity> findAll() {
 		// TODO Auto-generated method stub
 		return StreamSupport.stream(carrierRepository.findAll().spliterator(),false).collect(Collectors.toList());
+	}
+
+	@Override
+	public Optional<CarrierEntity> findOne(String id) {
+		// TODO Auto-generated method stub
+		return carrierRepository.findById(id);
+	}
+
+	@Override
+	public boolean isExists(String id) {
+		// TODO Auto-generated method stub
+		return carrierRepository.existsById(id);
 	}
 
 }
