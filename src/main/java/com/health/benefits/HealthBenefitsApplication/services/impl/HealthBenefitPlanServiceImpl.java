@@ -2,6 +2,8 @@ package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -32,13 +34,13 @@ public class HealthBenefitPlanServiceImpl implements HealthBenefitPlanService {
 		@Override
 		public List<HealthBenefitPlanEntity> findAll() {
 			// TODO Auto-generated method stub
-			return null;
+			return StreamSupport.stream(healthBenefitPlanRepository.findAll().spliterator(),false).collect(Collectors.toList());
 		}
 
 		@Override
 		public Optional<HealthBenefitPlanEntity> findOne(String id) {
 			// TODO Auto-generated method stub
-			return Optional.empty();
+			return healthBenefitPlanRepository.findById(id);
 		}
 
 		@Override

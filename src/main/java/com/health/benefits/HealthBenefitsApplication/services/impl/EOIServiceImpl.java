@@ -2,6 +2,8 @@ package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
@@ -31,13 +33,13 @@ public class EOIServiceImpl implements EOIService {
 	@Override
 	public List<EOIEntity> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return StreamSupport.stream(eoiRepository.findAll().spliterator(),false).collect(Collectors.toList());
 	}
 
 	@Override
 	public Optional<EOIEntity> findOne(String id) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return eoiRepository.findById(id);
 	}
 
 	@Override
