@@ -62,13 +62,13 @@ public class CarrierController{
 	    		 @RequestBody CarrierDTO carrierDTO){
 	    	 CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO);
 	         boolean carrierExists = carrierService.isExists(id);
-	         CarrierEntity savedBookEntity = carrierService.createUpdateCarrier(isbn, bookEntity);
-	         CarrierDTO savedUpdatedBookDto = carrierMapper.mapTo(savedBookEntity);
+	         CarrierEntity savedCarrierEntity = carrierService.createUpdateCarrier(id, carrierEntity);
+	         CarrierDTO savedUpdatedCarrierDTO = carrierMapper.mapTo(savedCarrierEntity);
 
 	         if(carrierExists){
-	             return new ResponseEntity(savedUpdatedBookDto, HttpStatus.OK);
+	             return new ResponseEntity<CarrierDTO>(savedUpdatedCarrierDTO, HttpStatus.OK);
 	         } else {
-	             return new ResponseEntity(savedUpdatedBookDto, HttpStatus.CREATED);
+	             return new ResponseEntity<CarrierDTO>(savedUpdatedCarrierDTO, HttpStatus.CREATED);
 	         }
 	     }
 	     

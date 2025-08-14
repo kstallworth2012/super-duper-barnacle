@@ -1,5 +1,8 @@
 package com.health.benefits.HealthBenefitsApplication.services.impl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.health.benefits.HealthBenefitsApplication.domain.entities.PayrollDeductionEntity;
@@ -27,6 +30,30 @@ public class PayrollDeductionServiceImpl implements PayrollDeductionService {
 	public PayrollDeductionEntity createPayrollDeduction(PayrollDeductionEntity _payrollDeduction) {
 		// TODO Auto-generated method stub
 		return payrollDeductionRepository.save(_payrollDeduction);
+	}
+
+
+
+	@Override
+	public List<PayrollDeductionEntity> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public Optional<PayrollDeductionEntity> findOne(String id) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+
+
+	@Override
+	public boolean isExists(String id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
