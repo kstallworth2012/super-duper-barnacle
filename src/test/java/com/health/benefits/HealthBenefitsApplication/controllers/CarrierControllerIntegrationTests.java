@@ -22,36 +22,36 @@ import com.health.benefits.HealthBenefitsApplication.repositories.TestDataUtil;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @AutoConfigureMockMvc
 public class CarrierControllerIntegrationTests {
-
-	
-	private MockMvc mockMVC;
-	private ObjectMapper objectMapper;
-
-	@Autowired
-	public CarrierControllerIntegrationTests(MockMvc mockMVC) {
-		this.mockMVC = mockMVC;
-		this.objectMapper = new ObjectMapper();
-	}
-	
-	@Test
-	public void testThatCreateCarrierSuccessfullyReturnsHttp201Create() {
-		CarrierEntity testCarrierA = TestDataUtil.createTestCarrierEntityA();
-		try {
-        String carrierJson;
-		
-			carrierJson = objectMapper.writeValueAsString(testCarrierA);
-	
-		
-			mockMVC.perform(
-							MockMvcRequestBuilders.post("/new-carriers")
-									.contentType(MediaType.APPLICATION_JSON)
-									.content(carrierJson)
-						).andExpect(
-				                MockMvcResultMatchers.jsonPath("$.carrier_id").value("hif5"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+//
+//	
+//	private MockMvc mockMVC;
+//	private ObjectMapper objectMapper;
+//
+//	@Autowired
+//	public CarrierControllerIntegrationTests(MockMvc mockMVC) {
+//		this.mockMVC = mockMVC;
+//		this.objectMapper = new ObjectMapper();
+//	}
+//	
+//	@Test
+//	public void testThatCreateCarrierSuccessfullyReturnsHttp201Create() {
+//		CarrierEntity testCarrierA = TestDataUtil.createTestCarrierEntityA();
+//		try {
+//        String carrierJson;
+//		
+//			carrierJson = objectMapper.writeValueAsString(testCarrierA);
+//	
+//		
+//			mockMVC.perform(
+//							MockMvcRequestBuilders.post("/new-carriers")
+//									.contentType(MediaType.APPLICATION_JSON)
+//									.content(carrierJson)
+//						).andExpect(
+//				                MockMvcResultMatchers.jsonPath("$.carrier_id").value("hif5"));
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
 }

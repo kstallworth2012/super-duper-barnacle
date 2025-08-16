@@ -12,7 +12,7 @@ public interface DependentsService {
 	
 	List<DependentsEntity> findAll();
 	 	
- 	Optional<DependentsEntity> findOne(String id);
+ 	Optional<DependentsEntity> findOne(Long id);
  
- 	boolean isExists(String id);
+ 	boolean isExists(Long id);
 }

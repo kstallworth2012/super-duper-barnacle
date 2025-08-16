@@ -32,15 +32,15 @@ public class DependentsServiceImpl implements DependentsService {
 	}
 
 	@Override
-	public Optional<DependentsEntity> findOne(String id) {
+	public Optional<DependentsEntity> findOne(Long id) {
 		// TODO Auto-generated method stub
 		return dependentsRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(Long id) {
 		// TODO Auto-generated method stub
-		return false;
+		return dependentsRepository.existsById(id);
 	}
 
 }

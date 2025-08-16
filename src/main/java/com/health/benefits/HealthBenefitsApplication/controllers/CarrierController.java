@@ -9,6 +9,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +41,7 @@ public class CarrierController{
 	    			 }
 	     
 	     @GetMapping(path = "/{carrier_id}")
-	     public ResponseEntity<CarrierDTO> getCarrier(@PathVariable("carrier_id") String id){
+	     public ResponseEntity<CarrierDTO> getCarrier(@PathVariable("carrier_id") Long id){
 	    	 Optional<CarrierEntity> foundCarrier = carrierService.findOne(id);
 	    	 return foundCarrier.map(carrierEntity ->{
 	    		 CarrierDTO carrierDTO = carrierMapper.mapTo(carrierEntity);
@@ -49,7 +50,7 @@ public class CarrierController{
 	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	     }
 	     
-	     @PostMapping(path = "/new-carrier")
+	     @PostMapping(path = "/new-carrier",produces = MediaType.APPLICATION_JSON_VALUE)
 	     public ResponseEntity<CarrierDTO> createCarrier(@RequestBody CarrierDTO _carrierDTO){
 	          
 	     			CarrierEntity carrierEntity = carrierMapper.mapFrom(_carrierDTO);
@@ -58,11 +59,11 @@ public class CarrierController{
 	     }
 	 
 	     @PutMapping(path = "/{carrier_id}")
-	     public ResponseEntity<CarrierDTO> fullUpdateCarrier(@PathVariable("carrier_id") String id,
+	     public ResponseEntity<CarrierDTO> fullUpdateCarrier(@PathVariable("carrier_id") Long id,
 	    		 @RequestBody CarrierDTO carrierDTO){
 	    	 CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO);
 	         boolean carrierExists = carrierService.isExists(id);
-	         CarrierEntity savedCarrierEntity = carrierService.createUpdateCarrier(id, carrierEntity);
+	         CarrierEntity savedCarrierEntity = carrierService.save(carrierEntity);
 	         CarrierDTO savedUpdatedCarrierDTO = carrierMapper.mapTo(savedCarrierEntity);
 
 	         if(carrierExists){

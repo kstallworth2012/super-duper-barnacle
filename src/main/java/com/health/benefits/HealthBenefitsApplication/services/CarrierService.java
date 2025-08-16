@@ -14,7 +14,7 @@ public interface CarrierService {
 
 		 List<CarrierEntity> findAll();
 		 
-		 Optional<CarrierEntity> findOne(String id);
+		 Optional<CarrierEntity> findOne(Long id);
 		 
-		 boolean isExists(String id);
+		 boolean isExists(Long id);
 }

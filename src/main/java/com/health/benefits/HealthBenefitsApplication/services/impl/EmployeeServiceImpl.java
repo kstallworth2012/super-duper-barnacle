@@ -48,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public Optional<EmployeeEntity> findOne(String id) {
+	public Optional<EmployeeEntity> findOne(Long id) {
 		// TODO Auto-generated method stub
 		return employeeRepository.findById(id);
 	}
@@ -57,9 +57,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(Long id) {
 		// TODO Auto-generated method stub
-		return false;
+		return employeeRepository.existsById(id);
 	}
 
 }

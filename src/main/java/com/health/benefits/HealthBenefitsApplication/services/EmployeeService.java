@@ -12,7 +12,7 @@ public interface EmployeeService {
 	
 	List<EmployeeEntity> findAll();
 	 	
- 	Optional<EmployeeEntity> findOne(String id);
+ 	Optional<EmployeeEntity> findOne(Long id);
  
- 	boolean isExists(String id);
+ 	boolean isExists(Long id);
 }

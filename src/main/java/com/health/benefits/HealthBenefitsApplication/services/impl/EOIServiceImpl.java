@@ -45,7 +45,7 @@ public class EOIServiceImpl implements EOIService {
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return eoiRepository.existsById(id);
 	}
 
 }

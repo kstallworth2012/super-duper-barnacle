@@ -35,13 +35,13 @@ public class CarrierServiceImpl implements CarrierService {
 	}
 
 	@Override
-	public Optional<CarrierEntity> findOne(String id) {
+	public Optional<CarrierEntity> findOne(Long id) {
 		// TODO Auto-generated method stub
 		return carrierRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(Long id) {
 		// TODO Auto-generated method stub
 		return carrierRepository.existsById(id);
 	}

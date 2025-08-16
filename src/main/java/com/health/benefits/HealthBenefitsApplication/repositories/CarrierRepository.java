@@ -8,4 +8,4 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface CarrierRepository extends CrudRepository<CarrierEntity,String>{}
+public interface CarrierRepository extends CrudRepository<CarrierEntity,Long>{}

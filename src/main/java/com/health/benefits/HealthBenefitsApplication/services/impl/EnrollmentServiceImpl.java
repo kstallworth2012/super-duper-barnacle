@@ -47,7 +47,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	@Override
 	public boolean isExists(String id) {
 		// TODO Auto-generated method stub
-		return false;
+		return enrollmentRepository.existsById(id);
 	}
 
 
