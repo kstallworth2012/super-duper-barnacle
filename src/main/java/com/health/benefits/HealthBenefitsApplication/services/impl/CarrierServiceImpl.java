@@ -23,7 +23,7 @@ public class CarrierServiceImpl implements CarrierService {
 	}
 
 	@Override
-	public CarrierEntity save(CarrierEntity _carrier) {
+	public CarrierEntity createCarrier(CarrierEntity _carrier) {
 		// TODO Auto-generated method stub
 		return carrierRepository.save(_carrier);
 	}
@@ -44,6 +44,12 @@ public class CarrierServiceImpl implements CarrierService {
 	public boolean isExists(Long id) {
 		// TODO Auto-generated method stub
 		return carrierRepository.existsById(id);
+	}
+
+	@Override
+	public CarrierEntity createCarrierUpdate(CarrierEntity _carrier) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

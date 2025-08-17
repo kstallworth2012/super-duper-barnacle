@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CarrierDTO {
 	
-	private String carrier_id;
+	private Long carrier_id;
 	private String name;
 	private String contact;
 	private Boolean edi_support;

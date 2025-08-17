@@ -50,20 +50,20 @@ public class CarrierController{
 	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	     }
 	     
-	     @PostMapping(path = "/new-carrier",produces = MediaType.APPLICATION_JSON_VALUE)
+	     @PostMapping(path = "/new-carrier")
 	     public ResponseEntity<CarrierDTO> createCarrier(@RequestBody CarrierDTO _carrierDTO){
 	          
 	     			CarrierEntity carrierEntity = carrierMapper.mapFrom(_carrierDTO);
-	     	     	CarrierEntity savedCarrierEntity = carrierService.save(carrierEntity);
+	     	     	CarrierEntity savedCarrierEntity = carrierService.createCarrier(carrierEntity);
 	     	     	return new ResponseEntity<>(carrierMapper.mapTo(savedCarrierEntity), HttpStatus.CREATED);
 	     }
-	 
+	 /*
 	     @PutMapping(path = "/{carrier_id}")
 	     public ResponseEntity<CarrierDTO> fullUpdateCarrier(@PathVariable("carrier_id") Long id,
 	    		 @RequestBody CarrierDTO carrierDTO){
 	    	 CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO);
 	         boolean carrierExists = carrierService.isExists(id);
-	         CarrierEntity savedCarrierEntity = carrierService.save(carrierEntity);
+	         CarrierEntity savedCarrierEntity = carrierService.createCarrierUpdate(carrierEntity);
 	         CarrierDTO savedUpdatedCarrierDTO = carrierMapper.mapTo(savedCarrierEntity);
 
 	         if(carrierExists){
@@ -72,6 +72,7 @@ public class CarrierController{
 	             return new ResponseEntity<CarrierDTO>(savedUpdatedCarrierDTO, HttpStatus.CREATED);
 	         }
 	     }
+	     */
 	     
 	
 	/*

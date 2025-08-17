@@ -25,8 +25,9 @@ import lombok.*;
 public class CarrierEntity{
 
 		@Id
-		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "carrier_id_seq")
+//		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "carrier_id_seq")
 		private Long carrier_id;
+		
 		private String name;
 		private String contact;
 		private Boolean edi_support;

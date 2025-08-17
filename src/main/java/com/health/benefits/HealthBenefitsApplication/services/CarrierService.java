@@ -10,8 +10,8 @@ import com.health.benefits.HealthBenefitsApplication.domain.entities.CarrierEnti
 
 public interface CarrierService {
 		
-		CarrierEntity save(CarrierEntity _carrier);
-
+		CarrierEntity createCarrier(CarrierEntity _carrier);
+        CarrierEntity createCarrierUpdate(CarrierEntity _carrier);
 		 List<CarrierEntity> findAll();
 		 
 		 Optional<CarrierEntity> findOne(Long id);

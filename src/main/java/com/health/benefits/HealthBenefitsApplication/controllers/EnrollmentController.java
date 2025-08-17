@@ -28,7 +28,7 @@ public class EnrollmentController{
 
     // Read One
     @GetMapping("/{id}")
-    public ResponseEntity<EnrollmentEntity> get_____ById(@PathVariable String id) {
+    public ResponseEntity<EnrollmentEntity> getEnrollmentById(@PathVariable String id) {
         return enrollmentRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
