@@ -19,5 +19,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "enrollmentOptions") 
 public class EnrollmentOptionEntity {
-
+/* 
+ * EnrollmentOptionID (Primary Key)
+OptionName (e.g., Blue Cross PPO, High Deductible Plan)
+enum CoverageType (e.g., Medical, Dental, Vision)
+Enum Tier (e.g., Self-Only, Self + Spouse, Self + Family)
+private Double MonthlyCost (per tier)
+private String ProviderName 
+*/
 }

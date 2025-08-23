@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -43,11 +44,15 @@ public class PayrollDeductionController{
     }
 
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<PayrollDeductionEntity> getPayrollDeductionById(@PathVariable String id) {
-        return payrollDeductionRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @GetMapping("/{deduction_id}")
+    public ResponseEntity<PayrollDeductionDTO> getPayrollDeductionById(@PathVariable("deduction_id") String id) {
+       Optional<PayrollDeductionEntity> foundPayrollDeduction = payrollDeductionService.findOne(id);
+ 	    return foundPayrollDeduction.map(payrollDeductionEntity ->{
+	    	PayrollDeductionDTO payrollDeductionDTO = payrollDeductionMapper.mapTo(payrollDeductionEntity);
+		 return new ResponseEntity<>(payrollDeductionDTO, HttpStatus.OK);
+	 
+	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+   
     }
 
 }
