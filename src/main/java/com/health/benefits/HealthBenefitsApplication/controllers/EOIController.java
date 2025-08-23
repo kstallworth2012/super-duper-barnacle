@@ -6,22 +6,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.health.benefits.HealthBenefitsApplication.domain.dto.EoiDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EOIEntity;
+import com.health.benefits.HealthBenefitsApplication.mappers.Mapper;
 import com.health.benefits.HealthBenefitsApplication.repositories.EOIRepository;
+import com.health.benefits.HealthBenefitsApplication.services.EOIService;
 
 @RestController
 @RequestMapping("/api/eoi")
 public class EOIController{
 
 
-		private final EOIRepository eoiRepository;
-
-    public EOIController(EOIRepository _eoiRepository) {
-        this.eoiRepository = _eoiRepository;
-    }
+	  private EOIService eoiService;
+	  private Mapper<EOIEntity, EoiDTO> eoiMapper;
 
 
-    // Read All
+    public EOIController(EOIService eoiService, Mapper<EOIEntity, EoiDTO> eoiMapper) {
+		this.eoiService = eoiService;
+		this.eoiMapper = eoiMapper;
+	}
+
+	// Read All
     @GetMapping
     public Iterable<EOIEntity> getAllEOI() {
         return eoiRepository.findAll();

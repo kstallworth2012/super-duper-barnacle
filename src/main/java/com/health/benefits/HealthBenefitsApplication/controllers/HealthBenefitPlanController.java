@@ -14,12 +14,8 @@ import com.health.benefits.HealthBenefitsApplication.repositories.HealthBenefitP
 public class HealthBenefitPlanController{
 
 
-        private final HealthBenefitPlanRepository healthBenefitPlanRepository;
-
-    public HealthBenefitPlanController(HealthBenefitPlanRepository _healthBenefitPlanRepository) {
-        this.healthBenefitPlanRepository = _healthBenefitPlanRepository;
-    }
-
+	  private Service Service;
+	  private Mapper<Entity, DTO> Mapper;
 
     // Read All
     @GetMapping

@@ -5,22 +5,29 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import com.health.benefits.HealthBenefitsApplication.domain.dto.EnrollmentDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EnrollmentEntity;
+import com.health.benefits.HealthBenefitsApplication.mappers.Mapper;
 import com.health.benefits.HealthBenefitsApplication.repositories.EnrollmentRepository;
+import com.health.benefits.HealthBenefitsApplication.services.EnrollmentService;
 
 @RestController
 @RequestMapping("/api/enrollments")
 public class EnrollmentController{
 
 
-        private final EnrollmentRepository enrollmentRepository;
+	private EnrollmentService enrollmentService;
+    private Mapper<EnrollmentEntity, EnrollmentDTO> enrollmentMapper;
 
-    public EnrollmentController(EnrollmentRepository _enrollmentRepository) {
-        this.enrollmentRepository = _enrollmentRepository;
-    }
+      
+    public EnrollmentController(EnrollmentService enrollmentService,
+			Mapper<EnrollmentEntity, EnrollmentDTO> enrollmentMapper) {
+		this.enrollmentService = enrollmentService;
+		this.enrollmentMapper = enrollmentMapper;
+	}
 
-
-    // Read All
+	// Read All
     @GetMapping
     public Iterable<EnrollmentEntity> getAllEnrollments() {
         return enrollmentRepository.findAll();

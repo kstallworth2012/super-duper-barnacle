@@ -13,12 +13,8 @@ import com.health.benefits.HealthBenefitsApplication.repositories.EmployeeReposi
 public class EmployeeController{
 
 
-        private final EmployeeRepository employeeRepository;
-
-    public EmployeeController(EmployeeRepository _employeeRepository) {
-        this.employeeRepository = _employeeRepository;
-    }
-
+  private Service Service;
+  private Mapper<Entity, DTO> Mapper;
 
     // Read All
     @GetMapping

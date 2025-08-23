@@ -5,12 +5,17 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.springframework.stereotype.Service;
+
 import com.health.benefits.HealthBenefitsApplication.domain.entities.DependentsEntity;
 import com.health.benefits.HealthBenefitsApplication.repositories.DependentRepository;
 import com.health.benefits.HealthBenefitsApplication.services.DependentsService;
-
+@Service
 public class DependentsServiceImpl implements DependentsService {
 
+	
+	
+	
 	
 	private DependentRepository dependentsRepository;
 
