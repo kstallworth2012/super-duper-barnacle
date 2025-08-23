@@ -3,10 +3,18 @@ package com.health.benefits.HealthBenefitsApplication.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import com.health.benefits.HealthBenefitsApplication.domain.dto.HealthBenefitPlanDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenefitPlanEntity;
+import com.health.benefits.HealthBenefitsApplication.mappers.Mapper;
 import com.health.benefits.HealthBenefitsApplication.repositories.HealthBenefitPlanRepository;
+import com.health.benefits.HealthBenefitsApplication.services.HealthBenefitPlanService;
 
 
 @RestController
@@ -14,14 +22,21 @@ import com.health.benefits.HealthBenefitsApplication.repositories.HealthBenefitP
 public class HealthBenefitPlanController{
 
 
-	  private Service Service;
-	  private Mapper<Entity, DTO> Mapper;
+	  private HealthBenefitPlanService healthBenefitPlanService;
+	  private Mapper<HealthBenefitPlanEntity, HealthBenefitPlanDTO> healthBenefitPlanMapper;
 
-    // Read All
-    @GetMapping
-    public Iterable<HealthBenefitPlanEntity> getAllHealthBenefitPlans() {
-        return healthBenefitPlanRepository.findAll();
-    }
+	  public HealthBenefitPlanController(HealthBenefitPlanService healthBenefitPlanService,
+			Mapper<HealthBenefitPlanEntity, HealthBenefitPlanDTO> healthBenefitPlanMapper) {
+		this.healthBenefitPlanService = healthBenefitPlanService;
+		this.healthBenefitPlanMapper = healthBenefitPlanMapper;
+	}
+
+	// Read All
+	  @GetMapping(path = "/")
+	  public List<HealthBenefitPlanDTO> listHealthBenefitPlans(){
+	    	 List<HealthBenefitPlanEntity> healthbenefitplans = healthBenefitPlanService.findAll();
+	    	 return healthbenefitplans.stream().map(healthBenefitPlanMapper::mapTo).collect(Collectors.toList());
+	    			 }
 
     // Read One
     @GetMapping("/{id}")

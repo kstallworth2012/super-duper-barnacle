@@ -3,6 +3,11 @@ package com.health.benefits.HealthBenefitsApplication.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -32,8 +37,9 @@ public class PayrollDeductionController{
 
 	// Read All
     @GetMapping(path="/")
-    public Iterable<PayrollDeductionEntity> getAllPayrollDeductions() {
-        return payrollDeductionRepository.findAll();
+    public List<PayrollDeductionDTO> getAllPayrollDeductions() {
+    	List<PayrollDeductionEntity> payrollDeductions = payrollDeductionService.findAll();
+    	return payrollDeductions.stream().map(payrollDeductionMapper::mapTo).collect(Collectors.toList());
     }
 
     // Read One

@@ -3,6 +3,10 @@ package com.health.benefits.HealthBenefitsApplication.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -28,10 +32,11 @@ public class EnrollmentController{
 	}
 
 	// Read All
-    @GetMapping
-    public Iterable<EnrollmentEntity> getAllEnrollments() {
-        return enrollmentRepository.findAll();
-    }
+    @GetMapping(path = "/")
+    public List<EnrollmentDTO> listEnrollments(){
+   	 List<EnrollmentEntity> enrollments = enrollmentService.findAll();
+   	 return enrollments.stream().map(enrollmentMapper::mapTo).collect(Collectors.toList());
+   			 }
 
     // Read One
     @GetMapping("/{id}")
