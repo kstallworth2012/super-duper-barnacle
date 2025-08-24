@@ -26,7 +26,7 @@ import jakarta.persistence.CascadeType;
 public class EOIEntity{
 
 				@Id
-				private String eod_id;
+				private String eoi_id;
 				@OneToOne(cascade = CascadeType.ALL)
 				@JoinColumn
 				private EmployeeEntity emp_id;

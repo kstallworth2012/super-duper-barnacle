@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -39,11 +41,14 @@ public class HealthBenefitPlanController{
 	    			 }
 
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<HealthBenefitPlanEntity> getHealthBenefitPlanById(@PathVariable String id) {
-        return healthBenefitPlanRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+	  @GetMapping(path = "/{plan_id}")
+	  public ResponseEntity<HealthBenefitPlanDTO> getHealthBenefitPlanById(@PathVariable("plan_id") String id) {
+	     	Optional<HealthBenefitPlanEntity> foundHealthBenefitPlan = healthBenefitPlanService.findOne(id);
+	 	    return foundHealthBenefitPlan.map(healthBenefitPlanEntity ->{
+	 	    	HealthBenefitPlanDTO healthBenefitPlanDTO = healthBenefitPlanMapper.mapTo(healthBenefitPlanEntity);
+	 		 return new ResponseEntity<>(healthBenefitPlanDTO, HttpStatus.OK);
+	 	 
+	 	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	     }
 
 }

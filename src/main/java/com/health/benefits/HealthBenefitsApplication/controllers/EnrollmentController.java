@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -39,11 +41,14 @@ public class EnrollmentController{
    			 }
 
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<EnrollmentEntity> getEnrollmentById(@PathVariable String id) {
-        return enrollmentRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+    @GetMapping(path = "/{enrollment_id}")
+    public ResponseEntity<EnrollmentDTO> getEnrollmentById(@PathVariable("enrollment_id") String id) {
+       	Optional<EnrollmentEntity> foundEnrollment = enrollmentService.findOne(id);
+   	    return foundEnrollment.map(enrollmentEntity ->{
+   	    	EnrollmentDTO enrollmentDTO = enrollmentMapper.mapTo(enrollmentEntity);
+   		 return new ResponseEntity<>(enrollmentDTO, HttpStatus.OK);
+   	 
+   	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+       }
 
 }

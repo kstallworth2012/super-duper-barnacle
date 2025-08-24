@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -42,19 +44,16 @@ public class EmployeeController{
     
     
     
-    
-    
-    
-    
-    
-    
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<EmployeeEntity> getEmployeeById(@PathVariable Long id) {
-        return employeeRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+    @GetMapping(path = "/{emp_id}")
+    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable("emp_id") Long id) {
+       	Optional<EmployeeEntity> foundEmployee = employeeService.findOne(id);
+   	    return foundEmployee.map(employeeEntity ->{
+   	    	EmployeeDTO employeeDTO = employeeMapper.mapTo(employeeEntity);
+   		 return new ResponseEntity<>(employeeDTO, HttpStatus.OK);
+   	 
+   	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+       }
 
     
     

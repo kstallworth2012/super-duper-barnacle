@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -38,11 +40,14 @@ public class EOIController{
    			 }
 
     // Read One
-    @GetMapping("/{id}")
-    public ResponseEntity<EOIEntity> getEOIById(@PathVariable String id) {
-        return eoiRepository.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+    @GetMapping(path = "/{eoi_id}")
+    public ResponseEntity<EoiDTO> getEOIById(@PathVariable("eoi_id") String id) {
+       	Optional<EOIEntity> foundEOI = eoiService.findOne(id);
+   	    return foundEOI.map(eoiEntity ->{
+   	    	EoiDTO eoiDTO = eoiMapper.mapTo(eoiEntity);
+   		 return new ResponseEntity<>(eoiDTO, HttpStatus.OK);
+   	 
+   	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+       }
 
 }
