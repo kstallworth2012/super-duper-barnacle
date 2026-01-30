@@ -7,6 +7,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Id;
+import com.health.benefits.HealthBenefitsApplication.enums.OptionNameType;
+import com.health.benefits.HealthBenefitsApplication.enums.BenefitTier;
+import com.health.benefits.HealthBenefitsApplication.enums.CoverageType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 //This entity represents the available choices for 
 //employees during enrollment, 
 //linking a BenefitPlan with its specific costs.
@@ -23,6 +29,15 @@ public class EnrollmentOptionEntity {
 
  @Id
  private String EnrollmentOptionID;
+ private Double MonthlyCost;
+ private String ProviderName;
+ @Enumerated(EnumType.STRING)
+ private OptionNameType;
+
+ @Enumerated(EnumType.STRING)
+ private BenefitTier;
+ @Enumerated(EnumType.STRING)
+ private CoverageType
 /* 
  *
  EnrollmentOptionID (Primary Key)
