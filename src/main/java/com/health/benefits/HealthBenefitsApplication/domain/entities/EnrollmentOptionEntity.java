@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import jakarta.persistence.Id;
 //This entity represents the available choices for 
 //employees during enrollment, 
 //linking a BenefitPlan with its specific costs.
@@ -19,8 +19,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "enrollmentOptions") 
 public class EnrollmentOptionEntity {
+
+
+ @Id
+ private String EnrollmentOptionID;
 /* 
- * EnrollmentOptionID (Primary Key)
+ *
+ EnrollmentOptionID (Primary Key)
 OptionName (e.g., Blue Cross PPO, High Deductible Plan)
 enum CoverageType (e.g., Medical, Dental, Vision)
 Enum Tier (e.g., Self-Only, Self + Spouse, Self + Family)
