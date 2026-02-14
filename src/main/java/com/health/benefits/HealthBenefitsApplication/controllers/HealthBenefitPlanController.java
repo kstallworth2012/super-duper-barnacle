@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.HealthBenefitPlanDTO;
@@ -56,6 +57,23 @@ public class HealthBenefitPlanController{
 	  
 	   
 	     
+	
+	@PutMapping(path="/{id}")
+	public ResponseEntity<HealthBenefitPlanDTO> fullUpdateHealthBenefitPlan(@PathVariable("id") String id, @RequestBody HealthBenefitPlanDTO healthBenefitPlanDto){
+		
+		if(!healthBenefitPlanService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		healthBenefitPlanDto.setId(id);
+		HealthBenefitPlanEntity healthBenefitPlanEntity = healthBenefitPlanMapper.mapFrom(healthBenefitPlanDto);
+		HealthBenefitPlanEntity savedhealthBenefitPlanEntity = healthBenefitPlanService.save(healthBenefitPlanEntity);
+		
+		return new ResponseEntity<>(healthBenefitPlanMapper.mapTo(savedhealthBenefitPlanEntity), HttpStatus.OK); 
+		
+	}	
+	 
 	     
 	     
 	     	

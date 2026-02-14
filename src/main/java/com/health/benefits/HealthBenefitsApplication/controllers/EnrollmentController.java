@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.EnrollmentDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EnrollmentEntity;
@@ -56,6 +57,23 @@ public class EnrollmentController{
     
     
     
+
+@PutMapping(path="/{id}")
+public ResponseEntity<EnrollmentDTO> fullUpdateEnrollment(@PathVariable("id") String id, @RequestBody EnrollmentDTO enrollmentDto){
+	
+	if(!enrollmentService.isExists(id)) {
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	enrollmentDto.setId(id);
+	EnrollmentEntity enrollmentEntity = enrollmentMapper.mapFrom(enrollmentDto);
+	EnrollmentEntity savedEnrollmentEntity = enrollmentService.save(enrollmentEntity);
+	
+	return new ResponseEntity<>(enrollmentMapper.mapTo(savedEnrollmentEntity), HttpStatus.OK); 
+	
+}	
+
     
     
     	

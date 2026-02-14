@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.PayrollDeductionDTO;
@@ -59,6 +60,23 @@ public class PayrollDeductionController{
     }
     
     
+
+@PutMapping(path="/{id}")
+public ResponseEntity<PayrollDeductionDTO> fullUpdatePayrollDeduction(@PathVariable("id") String id, @RequestBody PayrollDeductionDTO payrollDto){
+	
+	if(!payrollDeductionService.isExists(id)) {
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	appDto.setId(id);
+	PayrollDeductionEntity payrollDeductionEntity = payrollDeductionMapper.mapFrom(payrollDto);
+	PayrollDeductionEntity savedPayrollDeductionEntity = payrollDeductionService.save(payrollDeductionEntity);
+	
+	return new ResponseEntity<>(payrollDeductionMapper.mapTo(savedPayrollDeductionEntity), HttpStatus.OK); 
+	
+}	
+
     
     
     

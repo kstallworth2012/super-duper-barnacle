@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.EoiDTO;
@@ -56,6 +57,23 @@ public class EOIController{
     
     
     
+
+@PutMapping(path="/{id}")
+public ResponseEntity<EoiDTO> fullUpdateEOI(@PathVariable("id") String id, @RequestBody EoiDTO eoiDto){
+	
+	if(!eoiService.isExists(id)) {
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	eoiDto.setId(id);
+	EOIEntity eoiEntity = eoiMapper.mapFrom(eoiDto);
+	EOIEntity savedEOIEntity = eoiService.save(eoiEntity);
+	
+	return new ResponseEntity<>(eoiMapper.mapTo(savedEOIEntity), HttpStatus.OK); 
+	
+}	
+
     
     
     	

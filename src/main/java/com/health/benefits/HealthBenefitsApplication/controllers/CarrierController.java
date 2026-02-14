@@ -64,34 +64,43 @@ public class CarrierController{
 	     public ResponseEntity<CarrierDTO> fullUpdateCarrier(@PathVariable("carrier_id") Long id,
 	    		 @RequestBody CarrierDTO carrierDTO){
 	    	 
-	    	 CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO);
-	         boolean carrierExists = carrierService.isExists(id);
-	         CarrierEntity savedCarrierEntity = carrierService.createCarrierUpdate(carrierEntity);
-	         CarrierDTO savedUpdatedCarrierDTO = carrierMapper.mapTo(savedCarrierEntity);
+//	    	 CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO);
+//	         boolean carrierExists = carrierService.isExists(id);
+//	         CarrierEntity savedCarrierEntity = carrierService.createCarrierUpdate(carrierEntity);
+//	         CarrierDTO savedUpdatedCarrierDTO = carrierMapper.mapTo(savedCarrierEntity);
 
-	         if(carrierExists){
-	             return new ResponseEntity<CarrierDTO>(savedUpdatedCarrierDTO, HttpStatus.OK);
-	         } else {
-	             return new ResponseEntity<CarrierDTO>(savedUpdatedCarrierDTO, HttpStatus.CREATED);
-	         }
-	         
-	         
 	         
 	         /*
 	          * alternative 
-	          * 
-	          * if(!carrierService.isExists(id){
-	          * 		return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
-	          * }
-	          * carrierDTO.setId(id); 
-	          * CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO); 
-	          * CarrierEntity savedAuthorEntity = carrierService.save(carrierEntity); 
-	          * return new ReponseEntity<>(carrierMapper.mapTo(savedCarrierEntity     
 	          */
+	           if(!carrierService.isExists(id){
+	           		return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
+	           }
+	           carrierDTO.setId(id); 
+	           CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO); 
+	           CarrierEntity savedCarrierEntity = carrierService.save(carrierEntity); 
+	           return new ResponseEntity<>(carrierMapper.mapTo(savedCarrierEntity), HttpStatus.OK);    
+	          
 	     }
 	     
 	     
-	     
+	/*
+	 	@PutMapping(path="/{id}")
+	public ResponseEntity<ApplicantDto> fullUpdateApplicant(@PathVariable("id") String id, @RequestBody ApplicantDto appDto){
+		
+		if(!appService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		appDto.setId(id);
+		Applicant applicantEntity = applicantMapper.mapFrom(appDto);
+		Applicant savedApplicantEntity = appService.save(applicantEntity);
+		
+		return new ResponseEntity<>(applicantMapper.mapTo(savedApplicantEntity), HttpStatus.OK); 
+		
+	}	
+	 */
 	     
 	     	
 	

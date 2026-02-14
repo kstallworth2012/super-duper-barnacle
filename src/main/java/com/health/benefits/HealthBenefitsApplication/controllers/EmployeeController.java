@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.EmployeeDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
@@ -60,6 +61,23 @@ public class EmployeeController{
     
     
     
+
+    @PutMapping(path="/{id}")
+    public ResponseEntity<EmployeeDTO> fullUpdateEmployee(@PathVariable("id") String id, @RequestBody EmployeeDTO empDto){
+	
+			if(!employeeService.isExists(id)) {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+				
+			}
+			
+			empDto.setId(id);
+			EmployeeEntity employeeEntity = employeeMapper.mapFrom(empDto);
+			EmployeeEntity savedEmployeeEntity = employeeService.save(employeeEntity);
+			
+			return new ResponseEntity<>(employeeMapper.mapTo(savedEmployeeEntity), HttpStatus.OK); 
+			
+}	
+
     
     	
 
