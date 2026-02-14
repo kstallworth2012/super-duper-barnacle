@@ -32,12 +32,12 @@ public class EnrollmentOptionEntity {
  private Double MonthlyCost;
  private String ProviderName;
  @Enumerated(EnumType.STRING)
- private OptionNameType;
+ private OptionNameType  optionNameType;
 
  @Enumerated(EnumType.STRING)
- private BenefitTier;
+ private BenefitTier benefitTier;
  @Enumerated(EnumType.STRING)
- private CoverageType
+ private CoverageType coverageType;
 /* 
  *
  EnrollmentOptionID (Primary Key)

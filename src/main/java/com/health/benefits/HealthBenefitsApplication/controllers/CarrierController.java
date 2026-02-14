@@ -57,10 +57,11 @@ public class CarrierController{
 	     	     	CarrierEntity savedCarrierEntity = carrierService.createCarrier(carrierEntity);
 	     	     	return new ResponseEntity<>(carrierMapper.mapTo(savedCarrierEntity), HttpStatus.CREATED);
 	     }
-	 /*
+	 
 	     @PutMapping(path = "/{carrier_id}")
 	     public ResponseEntity<CarrierDTO> fullUpdateCarrier(@PathVariable("carrier_id") Long id,
 	    		 @RequestBody CarrierDTO carrierDTO){
+	    	 
 	    	 CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO);
 	         boolean carrierExists = carrierService.isExists(id);
 	         CarrierEntity savedCarrierEntity = carrierService.createCarrierUpdate(carrierEntity);
@@ -71,8 +72,22 @@ public class CarrierController{
 	         } else {
 	             return new ResponseEntity<CarrierDTO>(savedUpdatedCarrierDTO, HttpStatus.CREATED);
 	         }
+	         
+	         
+	         
+	         /*
+	          * alternative 
+	          * 
+	          * if(!carrierService.isExists(id){
+	          * 		return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
+	          * }
+	          * carrierDTO.setId(id); 
+	          * CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO); 
+	          * CarrierEntity savedAuthorEntity = carrierService.save(carrierEntity); 
+	          * return new ReponseEntity<>(carrierMapper.mapTo(savedCarrierEntity     
+	          */
 	     }
-	     */
+	     
 	     
 	
 	/*
