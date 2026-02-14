@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -39,6 +40,18 @@ public class HealthBenefitPlanController{
 		this.healthBenefitPlanMapper = healthBenefitPlanMapper;
 	}
 
+	  
+	  
+	@PostMapping(path="/new-healthplan")
+	public ResponseEntity<HealthBenefitPlanDTO> createHealthBenefitPlan(@RequestBody HealthBenefitPlanDTO _app) {
+			HealthBenefitPlanEntity healthBenefitPlanEntity = healthBenefitPlanMapper.mapFrom(_app);
+			HealthBenefitPlanEntity savedHealthBenefitPlanEntity = healthBenefitPlanService.createApplicant(null, healthBenefitPlanEntity);
+			
+			return new ResponseEntity<>(healthBenefitPlanMapper.mapTo(savedHealthBenefitPlanEntity), HttpStatus.CREATED);
+	}
+	  
+	  
+	  
 	// Read All
 	  @GetMapping(path = "/")
 	  public List<HealthBenefitPlanDTO> listHealthBenefitPlans(){

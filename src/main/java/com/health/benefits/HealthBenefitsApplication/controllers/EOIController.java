@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -38,6 +39,18 @@ public class EOIController{
 		this.eoiMapper = eoiMapper;
 	}
 
+   
+    @PostMapping(path="/new-eoi")
+	public ResponseEntity<EoiDTO> createEOI(@RequestBody EoiDTO _app) {
+			EOIEntity eoiEntity = eoiMapper.mapFrom(_app);
+			EOIEntity savedEOIEntity = eoiService.createEOI(null, eoiEntity);
+			
+			return new ResponseEntity<>(eoiMapper.mapTo(savedEOIEntity), HttpStatus.CREATED);
+	}
+    
+    
+    
+    
 	// Read All
     @GetMapping(path = "/")
     public List<EoiDTO> listEOI(){

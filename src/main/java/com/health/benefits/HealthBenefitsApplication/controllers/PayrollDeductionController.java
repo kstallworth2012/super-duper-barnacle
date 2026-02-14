@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -41,6 +42,18 @@ public class PayrollDeductionController{
 		this.payrollDeductionService = payrollDeductionService;
 		this.payrollDeductionMapper = payrollDeductionMapper;
 	}
+    
+    
+    @PostMapping(path="/new-payroll-deduction")
+	public ResponseEntity<PayrollDeductionDTO> createPayrollDeduction(@RequestBody PayrollDeductionDTO _app) {
+			PayrollDeductionEntity payrollDeductionEntity = payrollDeductionMapper.mapFrom(_app);
+			PayrollDeductionEntity savedPayrollDeductionEntity = payrollDeductionService.createPayrollDeduction(null, payrollDeductionEntity);
+			
+			return new ResponseEntity<>(payrollDeductionMapper.mapTo(savedPayrollDeductionEntity), HttpStatus.CREATED);
+	}
+    
+    
+    
 
 	// Read All
     @GetMapping(path="/")
@@ -82,7 +95,7 @@ public ResponseEntity<PayrollDeductionDTO> fullUpdatePayrollDeduction(@PathVaria
 		
 	}
 	
-	appDto.setId(id);
+	payrollDto.setId(id);
 	PayrollDeductionEntity payrollDeductionEntity = payrollDeductionMapper.mapFrom(payrollDto);
 	PayrollDeductionEntity savedPayrollDeductionEntity = payrollDeductionService.save(payrollDeductionEntity);
 	

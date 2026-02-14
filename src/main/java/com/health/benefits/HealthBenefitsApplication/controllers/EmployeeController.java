@@ -13,7 +13,9 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.EmployeeDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
@@ -36,23 +38,35 @@ public class EmployeeController{
 		this.employeeMapper = employeeMapper;
 }
 
+	    
+	@PostMapping(path="/new-employee")
+	public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO emp_app) {
+			EmployeeEntity employeeEntity = employeeMapper.mapFrom(emp_app);
+			EmployeeEntity savedEmployeeEntity = employeeService.createEmployee(null, employeeEntity);
+			
+			return new ResponseEntity<>(employeeMapper.mapTo(savedEmployeeEntity), HttpStatus.CREATED);
+	}
+	     
+	    
+	    
+	    
 	// Read All
-    @GetMapping(path="/")
+    @GetMapping(path="/all")
     public List<EmployeeDTO> getAllEmployees(){
    	 List<EmployeeEntity> employees = employeeService.findAll();
    	 return employees.stream().map(employeeMapper::mapTo).collect(Collectors.toList());
    			 }
     
     
-    /*
+    
     	//PAGEABLE
 	@GetMapping(path="/")
-	public Page<ApplicantDto> listApplicants(Pageable page){
-		Page<Applicant> applicants = appService.findAll(page);
-		return applicants.map(applicantMapper::mapTo);
+	public Page<EmployeeDTO> listEmployees(Pageable page){
+		Page<Applicant> employees = employeeService.findAll(page);
+		return employees.map(employeeMapper::mapTo);
 	}
     
-    */
+    
     
     
     

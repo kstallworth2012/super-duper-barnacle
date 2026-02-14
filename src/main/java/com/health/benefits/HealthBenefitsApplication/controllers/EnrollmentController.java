@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -38,6 +39,21 @@ public class EnrollmentController{
 		this.enrollmentService = enrollmentService;
 		this.enrollmentMapper = enrollmentMapper;
 	}
+    
+    
+    
+    
+	@PostMapping(path="/new-enrollment")
+	public ResponseEntity<EnrollmentDTO> createEnrollment(@RequestBody EnrollmentDTO _app) {
+			EnrollmentEntity enrollmentEntity = enrollmentMapper.mapFrom(_app);
+			EnrollmentEntity savedEnrollmentEntity = enrollmentService.createEnrollment(null, enrollmentEntity);
+			
+			return new ResponseEntity<>(enrollmentMapper.mapTo(savedEnrollmentEntity), HttpStatus.CREATED);
+	}
+
+
+
+   
 
 	// Read All
     @GetMapping(path = "/")
