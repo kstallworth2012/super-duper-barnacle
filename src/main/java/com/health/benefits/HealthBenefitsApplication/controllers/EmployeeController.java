@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -56,6 +57,32 @@ public class EmployeeController{
    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
        }
 
+    
+    
+    
+    
+    	
+
+@PatchMapping(path ="{/id}")
+public ResponseEntity<EmployeeDTO> partialUpdate(@PathVariable("id") String id, @RequestBody EmployeeDTO employeeDto){
+	
+	if(!employeeService.isExists(id)) {
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	EmployeeEntity employeeEntity = employeeMapper.mapFrom(employeeDto);
+	EmployeeEntity updatedEmployee = employeeService.partialUpdate(id, employeeEntity);
+	
+	return new ResponseEntity<>(employeeMapper.mapTo(updatedEmployee), HttpStatus.OK);
+	
+	
+	
+}
+    
+    
+    
+    
     
     
  	@DeleteMapping(path="/{id}")

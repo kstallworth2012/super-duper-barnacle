@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,6 +53,32 @@ public class EnrollmentController{
    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
        }
 
+    
+    
+    
+    
+    
+    	
+
+@PatchMapping(path ="{/id}")
+public ResponseEntity<EnrollmentDTO> partialUpdate(@PathVariable("id") String id, @RequestBody EnrollmentDTO enrollmentDto){
+	
+	if(!enrollmentService.isExists(id)) {
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	EnrollmentEntity enrollmentEntity = enrollmentMapper.mapFrom(enrollmentDto);
+	EnrollmentEntity updatedEnrollment = enrollmentService.partialUpdate(id, applicantEntity);
+	
+	return new ResponseEntity<>(enrollmentMapper.mapTo(updatedApplicant), HttpStatus.OK);
+	
+	
+	
+}
+    
+    
+    
     
     
     

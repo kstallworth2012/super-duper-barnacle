@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -88,6 +89,31 @@ public class CarrierController{
 	          * return new ReponseEntity<>(carrierMapper.mapTo(savedCarrierEntity     
 	          */
 	     }
+	     
+	     
+	     
+	     
+	     	
+	
+	@PatchMapping(path ="{/id}")
+	public ResponseEntity<CarrierDTO> partialUpdate(@PathVariable("id") String id, @RequestBody CarrierDTO carrierDto){
+		
+		if(!carrierService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDto);
+		CarrierEntity updatedCarrier = carrierService.partialUpdate(id, carrierEntity);
+		
+		return new ResponseEntity<>(carrierMapper.mapTo(updatedCarrier), HttpStatus.OK);
+		
+		
+		
+	}
+	     
+	     
+	     
 	     
 	     
 	     

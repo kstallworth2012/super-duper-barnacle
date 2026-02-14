@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -63,6 +64,32 @@ public class DependentController{
     	DependentsEntity savedDependentEntity = dependentService.createDependent(dependentEntity);
     	     	return new ResponseEntity<>(dependentsMapper.mapTo(savedDependentEntity), HttpStatus.CREATED);
     }
+    
+    
+    
+   
+    
+    
+    	
+
+@PatchMapping(path ="{/id}")
+public ResponseEntity<DependentsDTO> partialUpdate(@PathVariable("id") String id, @RequestBody DependentsDTO dependentDto){
+	
+	if(!dependentService.isExists(id)) {
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	DependentsEntity dependentEntity = dependentsMapper.mapFrom(dependentDto);
+	DependentsEntity updatedDependent = dependentService.partialUpdate(id, dependentEntity);
+	
+	return new ResponseEntity<>(dependentsMapper.mapTo(updatedDependent), HttpStatus.OK);
+	
+	
+	
+}
+    
+    
     
     
     

@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.EoiDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EOIEntity;
@@ -50,6 +52,32 @@ public class EOIController{
    	 
    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
        }
+    
+    
+    
+    
+    
+    
+    	
+
+@PatchMapping(path ="{/id}")
+public ResponseEntity<EoiDTO> partialUpdate(@PathVariable("id") String id, @RequestBody EoiDTO eoiDto){
+	
+	if(!eoiService.isExists(id)) {
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+	}
+	
+	EOIEntity EOIEntity = eoiMapper.mapFrom(eoiDto);
+	EOIEntity updatedEOI = eoiService.partialUpdate(id, EOIEntity);
+	
+	return new ResponseEntity<>(eoiMapper.mapTo(updatedEOI), HttpStatus.OK);
+	
+	
+	
+}
+    
+    
     
     
     
