@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,7 +58,12 @@ public class HealthBenefitPlanController{
 	     }
 	  
 	   
-	     
+	   	//PAGEABLE
+	@GetMapping(path="/")
+	public Page<HealthBenefitPlanDTO> listHealthBenefitPlans(Pageable page){
+		Page<HealthBenefitPlanEntity> healthBenefitPlans = healthBenefitPlanService.findAll(page);
+		return healthBenefitPlans.map(healthBenefitPlanMapper::mapTo);
+	}  
 	
 	@PutMapping(path="/{id}")
 	public ResponseEntity<HealthBenefitPlanDTO> fullUpdateHealthBenefitPlan(@PathVariable("id") String id, @RequestBody HealthBenefitPlanDTO healthBenefitPlanDto){

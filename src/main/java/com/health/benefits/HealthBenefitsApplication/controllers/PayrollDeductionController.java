@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +48,17 @@ public class PayrollDeductionController{
     	List<PayrollDeductionEntity> payrollDeductions = payrollDeductionService.findAll();
     	return payrollDeductions.stream().map(payrollDeductionMapper::mapTo).collect(Collectors.toList());
     }
+    
+    
+    
+    
+    	//PAGEABLE
+	@GetMapping(path="/")
+	public Page<PayrollDeductionDTO> listPayrollDeductions(Pageable page){
+		Page<PayrollDeductionEntity> payrollDeductions = payrollDeductionService.findAll(page);
+		return payrollDeductions.map(payrollDeductionMapper::mapTo);
+	}
+    
 
     // Read One
     @GetMapping("/{deduction_id}")

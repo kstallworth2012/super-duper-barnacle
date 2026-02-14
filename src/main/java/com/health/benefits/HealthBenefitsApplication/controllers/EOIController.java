@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,8 +58,13 @@ public class EOIController{
     
     
     
-    
-
+    	//PAGEABLE
+	@GetMapping(path="/")
+	public Page<EoiDTO> listEOIs(Pageable page){
+		Page<EOIEntity> eois = eoiService.findAll(page);
+		return eois.map(eoiMapper::mapTo);
+	}
+     
 @PutMapping(path="/{id}")
 public ResponseEntity<EoiDTO> fullUpdateEOI(@PathVariable("id") String id, @RequestBody EoiDTO eoiDto){
 	

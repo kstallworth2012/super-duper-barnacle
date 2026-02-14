@@ -10,10 +10,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.health.benefits.HealthBenefitsApplication.domain.dto.EnrollmentDTO;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EnrollmentEntity;
@@ -54,6 +57,14 @@ public class EnrollmentController{
    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
        }
 
+    
+    
+    	//PAGEABLE
+	@GetMapping(path="/")
+	public Page<EnrollmentDTO> listEnrollments(Pageable page){
+		Page<EnrollmentEntity> enrollments = enrollmentService.findAll(page);
+		return enrollments.map(enrollmentMapper::mapTo);
+	}
     
     
     

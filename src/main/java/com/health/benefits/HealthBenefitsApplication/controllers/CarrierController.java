@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +53,17 @@ public class CarrierController{
 	    	 
 	    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	     }
+	     
+	 	//PAGEABLE
+	 	@GetMapping(path="/")
+	 	public Page<CarrierDTO> listCarriers(Pageable page){
+	 		Page<CarrierEntity> Carriers = carrierService.findAll(page);
+	 		return Carriers.map(carrierMapper::mapTo);
+	 	}
+	 	
+	     
+	     
+	     
 	     
 	     @PostMapping(path = "/new-carrier")
 	     public ResponseEntity<CarrierDTO> createCarrier(@RequestBody CarrierDTO _carrierDTO){
