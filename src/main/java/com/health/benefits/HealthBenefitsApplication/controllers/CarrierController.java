@@ -2,6 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -88,6 +89,17 @@ public class CarrierController{
 	          */
 	     }
 	     
+	     
+	     
+	     
+	 	@DeleteMapping(path="/{id}")
+	 	public ResponseEntity<CarrierDTO> deleteCarrier(@PathVariable("id") String id) {
+	 		
+	 		carrierService.delete(id);
+	 		
+	 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	 	}
+	      
 	     
 	
 	/*

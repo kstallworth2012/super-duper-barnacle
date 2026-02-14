@@ -2,6 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -51,4 +52,29 @@ public class EnrollmentController{
    	 }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
        }
 
+    
+    
+    
+    
+    
+    
+    
+ 	@DeleteMapping(path="/{id}")
+ 	public ResponseEntity<EnrollmentDTO> deleteEnrollment(@PathVariable("id") String id) {
+ 		
+ 		enrollmentService.delete(id);
+ 		
+ 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+ 	}
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
