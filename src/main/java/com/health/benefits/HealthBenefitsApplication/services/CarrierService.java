@@ -12,9 +12,7 @@ public interface CarrierService {
 		
 		CarrierEntity createCarrier(CarrierEntity _carrier);
         CarrierEntity createCarrierUpdate(CarrierEntity _carrier);
-		 List<CarrierEntity> findAll();
-		 
-		 Optional<CarrierEntity> findOne(Long id);
-		 
-		 boolean isExists(Long id);
+		List<CarrierEntity> findAll();
+		Optional<CarrierEntity> findOne(Long id);
+		boolean isExists(Long id);
 }

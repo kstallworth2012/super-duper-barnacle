@@ -1,5 +1,7 @@
 package com.health.benefits.HealthBenefitsApplication.domain.entities;
 
+import java.util.UUID;
+
 import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenefitPlanEntity;
 import com.health.benefits.HealthBenefitsApplication.enums.EOD_Status;
@@ -26,7 +28,7 @@ import jakarta.persistence.CascadeType;
 public class EOIEntity{
 
 				@Id
-				private String eoi_id;
+				private UUID eoi_id;
 				@OneToOne(cascade = CascadeType.ALL)
 				@JoinColumn
 				private EmployeeEntity emp_id;

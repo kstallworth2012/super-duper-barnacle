@@ -17,6 +17,7 @@ import jakarta.persistence.CascadeType;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,7 +35,7 @@ public class PayrollDeductionEntity{
 
 
 			@Id
-			private String deduction_id;
+			private UUID deduction_id;
 			@OneToOne(cascade = CascadeType.ALL)
 			@JoinColumn
 			private EmployeeEntity emp_id;

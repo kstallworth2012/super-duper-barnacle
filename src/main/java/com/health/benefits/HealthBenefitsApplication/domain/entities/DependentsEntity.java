@@ -2,6 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.domain.entities;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 import com.health.benefits.HealthBenefitsApplication.enums.DependentRelationship;
 import jakarta.persistence.Entity;
@@ -24,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class DependentsEntity{
 
 	@Id
-	Long dependent_id;
+	UUID dependent_id;
 	String name; 
 	@Enumerated(EnumType.STRING)
 	DependentRelationship relationship;

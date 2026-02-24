@@ -5,6 +5,7 @@ package com.health.benefits.HealthBenefitsApplication.domain.entities;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 import com.health.benefits.HealthBenefitsApplication.enums.CoverageLE;
 import com.health.benefits.HealthBenefitsApplication.enums.NetworkType;
@@ -29,7 +30,7 @@ public class EmployeeEntity{
 
 
 			@Id
-			private Long emp_id;
+			private UUID emp_id;
 			private String plan_id; 
 			private String plan_type; 
 			private String carrier; // should be Carrier entity

@@ -6,6 +6,7 @@ package com.health.benefits.HealthBenefitsApplication.domain.entities;
  */
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.health.benefits.HealthBenefitsApplication.enums.ClaimStatus;
 
@@ -31,7 +32,7 @@ public class ClaimEntity {
 	
 	
 	@Id
-	private Long claim_id;
+	private UUID claim_id;
 	@ManyToOne
 	@JoinColumn()
 	private EmployeeEntity employee_id;

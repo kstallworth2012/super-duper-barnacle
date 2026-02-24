@@ -11,7 +11,7 @@ public class ExplanationOfBenefitsEntity {
 	
 	/*
 				 * Key attributes of the EOB entity
-			private Long eob_id: A unique identifier for the EOB record.
+			private UUID eob_id: A unique identifier for the EOB record.
 			private ClaimEntity claim_id: The ID of the original healthcare claim.
 			private InsurancePolicyEntity insurance_policy_id: A foreign key linking to the InsurancePolicy entity.
 			private EmployeeEntity patient_id: A foreign key linking to the Patient entity (the covered employee or dependent).

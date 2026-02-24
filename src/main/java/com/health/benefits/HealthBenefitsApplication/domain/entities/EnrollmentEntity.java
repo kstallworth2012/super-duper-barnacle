@@ -8,6 +8,8 @@ import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenef
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -37,8 +39,11 @@ import lombok.NoArgsConstructor;
 public class EnrollmentEntity{
 
 
+
+
+	
 					@Id
-					private String enrollment_id;
+					private UUID enrollment_id;
 					@OneToOne(cascade = CascadeType.ALL)
 					@JoinColumn
 					private EmployeeEntity linked_employee;

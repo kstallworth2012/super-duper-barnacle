@@ -8,6 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.Id;
 import com.health.benefits.HealthBenefitsApplication.enums.OptionNameType;
+
+import java.util.UUID;
+
 import com.health.benefits.HealthBenefitsApplication.enums.BenefitTier;
 import com.health.benefits.HealthBenefitsApplication.enums.CoverageType;
 import jakarta.persistence.JoinColumn;
@@ -28,7 +31,7 @@ public class EnrollmentOptionEntity {
 
 
  @Id
- private String EnrollmentOptionID;
+ private UUID EnrollmentOptionID;
  private Double MonthlyCost;
  private String ProviderName;
  @Enumerated(EnumType.STRING)
