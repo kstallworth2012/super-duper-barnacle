@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -64,7 +65,7 @@ public class EnrollmentController{
 
     // Read One
     @GetMapping(path = "/{enrollment_id}")
-    public ResponseEntity<EnrollmentDTO> getEnrollmentById(@PathVariable("enrollment_id") String id) {
+    public ResponseEntity<EnrollmentDTO> getEnrollmentById(@PathVariable("enrollment_id") UUID id) {
        	Optional<EnrollmentEntity> foundEnrollment = enrollmentService.findOne(id);
    	    return foundEnrollment.map(enrollmentEntity ->{
    	    	EnrollmentDTO enrollmentDTO = enrollmentMapper.mapTo(enrollmentEntity);
@@ -86,7 +87,7 @@ public class EnrollmentController{
     
 
 @PutMapping(path="/{id}")
-public ResponseEntity<EnrollmentDTO> fullUpdateEnrollment(@PathVariable("id") String id, @RequestBody EnrollmentDTO enrollmentDto){
+public ResponseEntity<EnrollmentDTO> fullUpdateEnrollment(@PathVariable("id") UUID id, @RequestBody EnrollmentDTO enrollmentDto){
 	
 	if(!enrollmentService.isExists(id)) {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -106,7 +107,7 @@ public ResponseEntity<EnrollmentDTO> fullUpdateEnrollment(@PathVariable("id") St
     	
 
 @PatchMapping(path ="{/id}")
-public ResponseEntity<EnrollmentDTO> partialUpdate(@PathVariable("id") String id, @RequestBody EnrollmentDTO enrollmentDto){
+public ResponseEntity<EnrollmentDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody EnrollmentDTO enrollmentDto){
 	
 	if(!enrollmentService.isExists(id)) {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -114,9 +115,9 @@ public ResponseEntity<EnrollmentDTO> partialUpdate(@PathVariable("id") String id
 	}
 	
 	EnrollmentEntity enrollmentEntity = enrollmentMapper.mapFrom(enrollmentDto);
-	EnrollmentEntity updatedEnrollment = enrollmentService.partialUpdate(id, applicantEntity);
+	EnrollmentEntity updatedEnrollment = enrollmentService.partialUpdate(id, enrollmentEntity);
 	
-	return new ResponseEntity<>(enrollmentMapper.mapTo(updatedApplicant), HttpStatus.OK);
+	return new ResponseEntity<>(enrollmentMapper.mapTo(updatedEnrollment), HttpStatus.OK);
 	
 	
 	

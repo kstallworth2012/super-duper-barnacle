@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -75,7 +76,7 @@ public class PayrollDeductionController{
 
     // Read One
     @GetMapping("/{deduction_id}")
-    public ResponseEntity<PayrollDeductionDTO> getPayrollDeductionById(@PathVariable("deduction_id") String id) {
+    public ResponseEntity<PayrollDeductionDTO> getPayrollDeductionById(@PathVariable("deduction_id") UUID id) {
        Optional<PayrollDeductionEntity> foundPayrollDeduction = payrollDeductionService.findOne(id);
  	    return foundPayrollDeduction.map(payrollDeductionEntity ->{
 	    	PayrollDeductionDTO payrollDeductionDTO = payrollDeductionMapper.mapTo(payrollDeductionEntity);
@@ -88,7 +89,7 @@ public class PayrollDeductionController{
     
 
 @PutMapping(path="/{id}")
-public ResponseEntity<PayrollDeductionDTO> fullUpdatePayrollDeduction(@PathVariable("id") String id, @RequestBody PayrollDeductionDTO payrollDto){
+public ResponseEntity<PayrollDeductionDTO> fullUpdatePayrollDeduction(@PathVariable("id") UUID id, @RequestBody PayrollDeductionDTO payrollDto){
 	
 	if(!payrollDeductionService.isExists(id)) {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -109,7 +110,7 @@ public ResponseEntity<PayrollDeductionDTO> fullUpdatePayrollDeduction(@PathVaria
     	
 
 @PatchMapping(path ="{/id}")
-public ResponseEntity<PayrollDeductionDTO> partialUpdate(@PathVariable("id") String id, @RequestBody PayrollDeductionDTO payrollDeductionDto){
+public ResponseEntity<PayrollDeductionDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody PayrollDeductionDTO payrollDeductionDto){
 	
 	if(!payrollDeductionService.isExists(id)) {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -132,7 +133,7 @@ public ResponseEntity<PayrollDeductionDTO> partialUpdate(@PathVariable("id") Str
     
     
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<PayrollDeductionDTO> deletePayrollDeduction(@PathVariable("id") String id) {
+	public ResponseEntity<PayrollDeductionDTO> deletePayrollDeduction(@PathVariable("id") UUID id) {
 		
 		payrollDeductionService.delete(id);
 		

@@ -56,7 +56,7 @@ public class PayrollDeductionServiceImpl implements PayrollDeductionService {
 	@Override
 	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
-		return false;
+		return payrollDeductionRepository.existsById(id);
 	}
 
 
@@ -64,7 +64,7 @@ public class PayrollDeductionServiceImpl implements PayrollDeductionService {
 	@Override
 	public PayrollDeductionEntity save(PayrollDeductionEntity _payrollDeduct) {
 		// TODO Auto-generated method stub
-		return null;
+		return payrollDeductionRepository.save(_payrollDeduct);
 	}
 
 
@@ -80,7 +80,7 @@ public class PayrollDeductionServiceImpl implements PayrollDeductionService {
 	@Override
 	public void delete(UUID payroll_id) {
 		// TODO Auto-generated method stub
-		
+		payrollDeductionRepository.deleteById(payroll_id);
 	}
 
 }

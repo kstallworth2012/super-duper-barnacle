@@ -69,7 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public EmployeeEntity save(EmployeeEntity _employee) {
 		// TODO Auto-generated method stub
-		return null;
+		return employeeRepository.save(_employee);
 	}
 
 
@@ -87,7 +87,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void delete(UUID _id) {
 		// TODO Auto-generated method stub
-		
+		employeeRepository.deleteById(_id);
 	}
 
 }

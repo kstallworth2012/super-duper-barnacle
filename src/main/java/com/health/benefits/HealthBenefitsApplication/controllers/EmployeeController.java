@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -72,7 +73,7 @@ public class EmployeeController{
     
     // Read One
     @GetMapping(path = "/{emp_id}")
-    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable("emp_id") Long id) {
+    public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable("emp_id") UUID id) {
        	Optional<EmployeeEntity> foundEmployee = employeeService.findOne(id);
    	    return foundEmployee.map(employeeEntity ->{
    	    	EmployeeDTO employeeDTO = employeeMapper.mapTo(employeeEntity);
@@ -86,7 +87,7 @@ public class EmployeeController{
     
 
     @PutMapping(path="/{id}")
-    public ResponseEntity<EmployeeDTO> fullUpdateEmployee(@PathVariable("id") String id, @RequestBody EmployeeDTO empDto){
+    public ResponseEntity<EmployeeDTO> fullUpdateEmployee(@PathVariable("id") UUID id, @RequestBody EmployeeDTO empDto){
 	
 			if(!employeeService.isExists(id)) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -105,7 +106,7 @@ public class EmployeeController{
     	
 
 @PatchMapping(path ="{/id}")
-public ResponseEntity<EmployeeDTO> partialUpdate(@PathVariable("id") String id, @RequestBody EmployeeDTO employeeDto){
+public ResponseEntity<EmployeeDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody EmployeeDTO employeeDto){
 	
 	if(!employeeService.isExists(id)) {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -127,7 +128,7 @@ public ResponseEntity<EmployeeDTO> partialUpdate(@PathVariable("id") String id, 
     
     
  	@DeleteMapping(path="/{id}")
- 	public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable("id") String id) {
+ 	public ResponseEntity<EmployeeDTO> deleteEmployee(@PathVariable("id") UUID id) {
  		
  		employeeService.delete(id);
  		

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -61,7 +62,7 @@ public class HealthBenefitPlanController{
 
     // Read One
 	  @GetMapping(path = "/{plan_id}")
-	  public ResponseEntity<HealthBenefitPlanDTO> getHealthBenefitPlanById(@PathVariable("plan_id") String id) {
+	  public ResponseEntity<HealthBenefitPlanDTO> getHealthBenefitPlanById(@PathVariable("plan_id") UUID id) {
 	     	Optional<HealthBenefitPlanEntity> foundHealthBenefitPlan = healthBenefitPlanService.findOne(id);
 	 	    return foundHealthBenefitPlan.map(healthBenefitPlanEntity ->{
 	 	    	HealthBenefitPlanDTO healthBenefitPlanDTO = healthBenefitPlanMapper.mapTo(healthBenefitPlanEntity);
@@ -99,7 +100,7 @@ public class HealthBenefitPlanController{
 	     	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<HealthBenefitPlanDTO> partialUpdate(@PathVariable("id") String id, @RequestBody HealthBenefitPlanDTO healthPlanDto){
+	public ResponseEntity<HealthBenefitPlanDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody HealthBenefitPlanDTO healthPlanDto){
 		
 		if(!healthBenefitPlanService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -124,7 +125,7 @@ public class HealthBenefitPlanController{
 	  
 	  
 		@DeleteMapping(path="/{id}")
-		public ResponseEntity<HealthBenefitPlanDTO> deleteHealthBenefitPlan(@PathVariable("id") String id) {
+		public ResponseEntity<HealthBenefitPlanDTO> deleteHealthBenefitPlan(@PathVariable("id") UUID id) {
 			
 			healthBenefitPlanService.delete(id);
 			

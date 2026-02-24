@@ -52,7 +52,7 @@ public class EOIServiceImpl implements EOIService {
 	@Override
 	public EOIEntity save(EOIEntity _eoi) {
 		// TODO Auto-generated method stub
-		return null;
+		return eoiRepository.save(_eoi);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class EOIServiceImpl implements EOIService {
 	@Override
 	public void delete(UUID id) {
 		// TODO Auto-generated method stub
-		
+		eoiRepository.deleteById(id);
 	}
 
 }

@@ -52,7 +52,7 @@ public class DependentsServiceImpl implements DependentsService {
 	@Override
 	public DependentsEntity save(DependentsEntity _dependents) {
 		// TODO Auto-generated method stub
-		return null;
+		return dependentsRepository.save(_dependents);
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class DependentsServiceImpl implements DependentsService {
 	@Override
 	public void delete(UUID _id) {
 		// TODO Auto-generated method stub
-		
+		dependentsRepository.deleteById(_id);
 	}
 
 }

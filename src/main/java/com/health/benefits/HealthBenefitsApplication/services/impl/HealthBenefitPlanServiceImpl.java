@@ -47,13 +47,13 @@ public class HealthBenefitPlanServiceImpl implements HealthBenefitPlanService {
 		@Override
 		public boolean isExists(UUID id) {
 			// TODO Auto-generated method stub
-			return false;
+			return healthBenefitPlanRepository.existsById(id);
 		}
 
 		@Override
 		public HealthBenefitPlanEntity save(HealthBenefitPlanEntity hbp) {
 			// TODO Auto-generated method stub
-			return null;
+			return healthBenefitPlanRepository.save(hbp);
 		}
 
 		@Override
@@ -65,7 +65,7 @@ public class HealthBenefitPlanServiceImpl implements HealthBenefitPlanService {
 		@Override
 		public void delete(UUID id) {
 			// TODO Auto-generated method stub
-			
+			healthBenefitPlanRepository.deleteById(id);
 		}
 		
 		

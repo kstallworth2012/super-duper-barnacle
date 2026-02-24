@@ -50,7 +50,7 @@ public class CarrierServiceImpl implements CarrierService {
 	@Override
 	public CarrierEntity createCarrierUpdate(CarrierEntity _carrier) {
 		// TODO Auto-generated method stub
-		return null;
+		return carrierRepository.save(_carrier);
 	}
 
 

@@ -54,7 +54,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	@Override
 	public EnrollmentEntity save(EnrollmentEntity _enrollment) {
 		// TODO Auto-generated method stub
-		return null;
+		return enrollmentRepository.save(_enrollment);
 	}
 
 	@Override

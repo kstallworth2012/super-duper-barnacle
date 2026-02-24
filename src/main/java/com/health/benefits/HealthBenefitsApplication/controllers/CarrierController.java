@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -45,7 +46,7 @@ public class CarrierController{
 	    			 }
 	     
 	     @GetMapping(path = "/{carrier_id}")
-	     public ResponseEntity<CarrierDTO> getCarrier(@PathVariable("carrier_id") Long id){
+	     public ResponseEntity<CarrierDTO> getCarrier(@PathVariable("carrier_id") UUID id){
 	    	 Optional<CarrierEntity> foundCarrier = carrierService.findOne(id);
 	    	 return foundCarrier.map(carrierEntity ->{
 	    		 CarrierDTO carrierDTO = carrierMapper.mapTo(carrierEntity);
@@ -74,7 +75,7 @@ public class CarrierController{
 	     }
 	 
 	     @PutMapping(path = "/{carrier_id}")
-	     public ResponseEntity<CarrierDTO> fullUpdateCarrier(@PathVariable("carrier_id") Long id,
+	     public ResponseEntity<CarrierDTO> fullUpdateCarrier(@PathVariable("carrier_id") UUID id,
 	    		 @RequestBody CarrierDTO carrierDTO){
 	    	 
 //	    	 CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO);
@@ -141,7 +142,7 @@ public class CarrierController{
 	     
 	     
 	 	@DeleteMapping(path="/{id}")
-	 	public ResponseEntity<CarrierDTO> deleteCarrier(@PathVariable("id") String id) {
+	 	public ResponseEntity<CarrierDTO> deleteCarrier(@PathVariable("id") UUID id) {
 	 		
 	 		carrierService.delete(id);
 	 		

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
@@ -60,7 +61,7 @@ public class EOIController{
 
     // Read One
     @GetMapping(path = "/{eoi_id}")
-    public ResponseEntity<EoiDTO> getEOIById(@PathVariable("eoi_id") String id) {
+    public ResponseEntity<EoiDTO> getEOIById(@PathVariable("eoi_id") UUID id) {
        	Optional<EOIEntity> foundEOI = eoiService.findOne(id);
    	    return foundEOI.map(eoiEntity ->{
    	    	EoiDTO eoiDTO = eoiMapper.mapTo(eoiEntity);
@@ -79,7 +80,7 @@ public class EOIController{
 	}
      
 @PutMapping(path="/{id}")
-public ResponseEntity<EoiDTO> fullUpdateEOI(@PathVariable("id") String id, @RequestBody EoiDTO eoiDto){
+public ResponseEntity<EoiDTO> fullUpdateEOI(@PathVariable("id") UUID id, @RequestBody EoiDTO eoiDto){
 	
 	if(!eoiService.isExists(id)) {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -99,7 +100,7 @@ public ResponseEntity<EoiDTO> fullUpdateEOI(@PathVariable("id") String id, @Requ
     	
 
 @PatchMapping(path ="{/id}")
-public ResponseEntity<EoiDTO> partialUpdate(@PathVariable("id") String id, @RequestBody EoiDTO eoiDto){
+public ResponseEntity<EoiDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody EoiDTO eoiDto){
 	
 	if(!eoiService.isExists(id)) {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -124,7 +125,7 @@ public ResponseEntity<EoiDTO> partialUpdate(@PathVariable("id") String id, @Requ
     
     
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<EoiDTO> deleteEOI(@PathVariable("id") String id) {
+	public ResponseEntity<EoiDTO> deleteEOI(@PathVariable("id") UUID id) {
 		
 		eoiService.delete(id);
 		
