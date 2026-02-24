@@ -2,6 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -35,13 +36,13 @@ public class CarrierServiceImpl implements CarrierService {
 	}
 
 	@Override
-	public Optional<CarrierEntity> findOne(Long id) {
+	public Optional<CarrierEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return carrierRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(Long id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return carrierRepository.existsById(id);
 	}
@@ -50,6 +51,21 @@ public class CarrierServiceImpl implements CarrierService {
 	public CarrierEntity createCarrierUpdate(CarrierEntity _carrier) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+
+	@Override
+	public CarrierEntity partialUpdate(UUID id, CarrierEntity _carrier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		carrierRepository.deleteById(_id);
 	}
 
 }

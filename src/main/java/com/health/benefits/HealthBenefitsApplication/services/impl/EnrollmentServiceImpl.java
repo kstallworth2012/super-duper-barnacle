@@ -2,6 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -39,15 +40,33 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	}
 
 	@Override
-	public Optional<EnrollmentEntity> findOne(String id) {
+	public Optional<EnrollmentEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return enrollmentRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return enrollmentRepository.existsById(id);
+	}
+
+	@Override
+	public EnrollmentEntity save(EnrollmentEntity _enrollment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EnrollmentEntity partialUpdate(UUID enroll_id, EnrollmentEntity _enrollment) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID id) {
+		// TODO Auto-generated method stub
+		enrollmentRepository.deleteById(id);
 	}
 
 

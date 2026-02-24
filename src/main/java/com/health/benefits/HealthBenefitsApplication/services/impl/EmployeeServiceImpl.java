@@ -2,6 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -48,7 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public Optional<EmployeeEntity> findOne(Long id) {
+	public Optional<EmployeeEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return employeeRepository.findById(id);
 	}
@@ -57,9 +58,36 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
 	@Override
-	public boolean isExists(Long id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return employeeRepository.existsById(id);
+	}
+
+
+
+
+	@Override
+	public EmployeeEntity save(EmployeeEntity _employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	@Override
+	public EmployeeEntity partialUpdate(UUID _id, EmployeeEntity _employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

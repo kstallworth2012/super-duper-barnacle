@@ -2,6 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ public interface CarrierService {
 		CarrierEntity createCarrier(CarrierEntity _carrier);
         CarrierEntity createCarrierUpdate(CarrierEntity _carrier);
 		List<CarrierEntity> findAll();
-		Optional<CarrierEntity> findOne(Long id);
-		boolean isExists(Long id);
+		Optional<CarrierEntity> findOne(UUID id);
+		boolean isExists(UUID id);
+		CarrierEntity partialUpdate(UUID id, CarrierEntity _carrier);
+		void delete(UUID _id);
 }

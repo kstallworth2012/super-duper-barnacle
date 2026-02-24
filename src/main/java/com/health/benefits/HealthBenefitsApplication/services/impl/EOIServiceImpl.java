@@ -2,6 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -37,15 +38,33 @@ public class EOIServiceImpl implements EOIService {
 	}
 
 	@Override
-	public Optional<EOIEntity> findOne(String id) {
+	public Optional<EOIEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return eoiRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(String id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return eoiRepository.existsById(id);
+	}
+
+	@Override
+	public EOIEntity save(EOIEntity _eoi) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EOIEntity partialUpdate(UUID eoi_id, EOIEntity _eoi) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

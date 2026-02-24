@@ -2,6 +2,7 @@ package com.health.benefits.HealthBenefitsApplication.services.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -37,15 +38,33 @@ public class DependentsServiceImpl implements DependentsService {
 	}
 
 	@Override
-	public Optional<DependentsEntity> findOne(Long id) {
+	public Optional<DependentsEntity> findOne(UUID id) {
 		// TODO Auto-generated method stub
 		return dependentsRepository.findById(id);
 	}
 
 	@Override
-	public boolean isExists(Long id) {
+	public boolean isExists(UUID id) {
 		// TODO Auto-generated method stub
 		return dependentsRepository.existsById(id);
+	}
+
+	@Override
+	public DependentsEntity save(DependentsEntity _dependents) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DependentsEntity partialUpdate(UUID _id, DependentsEntity _dependents) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(UUID _id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

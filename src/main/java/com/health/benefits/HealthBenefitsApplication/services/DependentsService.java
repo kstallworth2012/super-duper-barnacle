@@ -15,9 +15,9 @@ public interface DependentsService {
 	
 	List<DependentsEntity> findAll();
 	 	
- 	Optional<DependentsEntity> findOne(Long id);
+ 	Optional<DependentsEntity> findOne(UUID id);
  
- 	boolean isExists(Long id);
+ 	boolean isExists(UUID id);
  	
  	DependentsEntity partialUpdate(UUID _id, DependentsEntity _dependents);
  	
