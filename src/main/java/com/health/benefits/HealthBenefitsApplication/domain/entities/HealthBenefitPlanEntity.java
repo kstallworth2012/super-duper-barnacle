@@ -38,6 +38,20 @@ public class HealthBenefitPlanEntity{
 				private Double employer_copay;
 				@Enumerated(EnumType.STRING)
 				private NetworkType network_type;
+				
+				
+				public UUID getPlan_id() {
+					return plan_id;
+				}
+				public void setPlan_id(UUID plan_id) {
+					this.plan_id = plan_id;
+				}
+				public String getPlan_type() {
+					return plan_type;
+				}
+				public void setPlan_type(String plan_type) {
+					this.plan_type = plan_type;
+				}
 
 
 }

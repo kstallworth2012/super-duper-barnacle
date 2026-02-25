@@ -41,6 +41,29 @@ public class EnrollmentOptionEntity {
  private BenefitTier benefitTier;
  @Enumerated(EnumType.STRING)
  private CoverageType coverageType;
+ 
+ 
+ 
+public UUID getEnrollmentOptionID() {
+	return EnrollmentOptionID;
+}
+public void setEnrollmentOptionID(UUID enrollmentOptionID) {
+	EnrollmentOptionID = enrollmentOptionID;
+}
+public String getProviderName() {
+	return ProviderName;
+}
+public void setProviderName(String providerName) {
+	ProviderName = providerName;
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 /* 
  *
  EnrollmentOptionID (Primary Key)

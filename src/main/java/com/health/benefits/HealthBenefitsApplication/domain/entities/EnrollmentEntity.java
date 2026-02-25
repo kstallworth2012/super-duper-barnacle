@@ -56,4 +56,35 @@ public class EnrollmentEntity{
 				    private LocalDate enrollment_date;
 				    @Enumerated(EnumType.STRING)
 				    private EnrollmentStatus enrollment_status;
+				    
+				    
+				    
+					public UUID getEnrollment_id() {
+						return enrollment_id;
+					}
+					public void setEnrollment_id(UUID enrollment_id) {
+						this.enrollment_id = enrollment_id;
+					}
+					public EmployeeEntity getLinked_employee() {
+						return linked_employee;
+					}
+					public void setLinked_employee(EmployeeEntity linked_employee) {
+						this.linked_employee = linked_employee;
+					}
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
+				    
 }

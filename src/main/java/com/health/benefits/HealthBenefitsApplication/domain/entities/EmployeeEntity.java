@@ -42,6 +42,28 @@ public class EmployeeEntity{
 			// private Double employer_copay; 
 			// @Enumerated(EnumType.STRING)
 			// private NetworkType network_type;
+			
+			
+			
+			public String getPlan_id() {
+				return plan_id;
+			}
+			public void setPlan_id(String plan_id) {
+				this.plan_id = plan_id;
+			}
+			public String getCarrier() {
+				return carrier;
+			}
+			public void setCarrier(String carrier) {
+				this.carrier = carrier;
+			}
+			
+			
+			
+			
+			
+			
+			
 }
 
 

@@ -46,5 +46,21 @@ public class PayrollDeductionEntity{
 			@Enumerated(EnumType.STRING)
 			private DeductionFrequency frequency;
 			private LocalDate start_date;
-			private LocalDate end_date; 
+			private LocalDate end_date;
+			
+			
+			public UUID getDeduction_id() {
+				return deduction_id;
+			}
+			public void setDeduction_id(UUID deduction_id) {
+				this.deduction_id = deduction_id;
+			}
+			public EmployeeEntity getEmp_id() {
+				return emp_id;
+			}
+			public void setEmp_id(EmployeeEntity emp_id) {
+				this.emp_id = emp_id;
+			} 
+			
+			
 }

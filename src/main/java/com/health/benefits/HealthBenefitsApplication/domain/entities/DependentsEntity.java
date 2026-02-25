@@ -33,4 +33,25 @@ public class DependentsEntity{
 	String gender;
 	String ssn;
 	Boolean eligible;
+	
+	
+	
+	public UUID getDependent_id() {
+		return dependent_id;
+	}
+	public void setDependent_id(UUID dependent_id) {
+		this.dependent_id = dependent_id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
+	
+	
+	
 } 

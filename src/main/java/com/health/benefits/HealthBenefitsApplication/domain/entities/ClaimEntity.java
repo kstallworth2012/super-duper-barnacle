@@ -48,5 +48,24 @@ public class ClaimEntity {
 	private Double amountPaid;
 	private String ExplanationOfBenefits;
 	
+	
+	public UUID getClaim_id() {
+		return claim_id;
+	}
+	public void setClaim_id(UUID claim_id) {
+		this.claim_id = claim_id;
+	}
+	public EmployeeEntity getEmployee_id() {
+		return employee_id;
+	}
+	public void setEmployee_id(EmployeeEntity employee_id) {
+		this.employee_id = employee_id;
+	}
+	
 
+	
+	
+	
+	
+	
 }

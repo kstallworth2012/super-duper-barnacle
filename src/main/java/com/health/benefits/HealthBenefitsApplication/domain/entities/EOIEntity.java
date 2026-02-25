@@ -40,4 +40,18 @@ public class EOIEntity{
 				private String DocumentArr;  //need a list of documents here 
 				//is it this 
 				// List<String> documents; 
+				public UUID getEoi_id() {
+					return eoi_id;
+				}
+				public void setEoi_id(UUID eoi_id) {
+					this.eoi_id = eoi_id;
+				}
+				public HealthBenefitPlanEntity getPlan_id() {
+					return plan_id;
+				}
+				public void setPlan_id(HealthBenefitPlanEntity plan_id) {
+					this.plan_id = plan_id;
+				}
+				
+				
 }

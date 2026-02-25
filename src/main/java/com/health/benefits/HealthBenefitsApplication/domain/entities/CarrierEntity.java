@@ -35,4 +35,36 @@ public class CarrierEntity{
 		private String contact;
 		private Boolean edi_support;
 		private String api_endpoint;
+		
+		
+		
+		
+			public UUID getCarrier_id() {
+			return carrier_id;
+		}
+		public void setCarrier_id(UUID carrier_id) {
+			this.carrier_id = carrier_id;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }
