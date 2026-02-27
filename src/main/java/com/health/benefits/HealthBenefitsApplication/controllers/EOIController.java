@@ -99,7 +99,7 @@ public ResponseEntity<EoiDTO> fullUpdateEOI(@PathVariable("id") UUID id, @Reques
     
     	
 
-@PatchMapping(path ="{/id}")
+@PatchMapping(path ="/{id}")
 public ResponseEntity<EoiDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody EoiDTO eoiDto){
 	
 	if(!eoiService.isExists(id)) {

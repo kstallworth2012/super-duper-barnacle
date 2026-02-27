@@ -100,7 +100,7 @@ public ResponseEntity<DependentsDTO> fullUpdateDependent(@PathVariable("id") UUI
     
     	
 
-@PatchMapping(path ="{/id}")
+@PatchMapping(path ="/{id}")
 public ResponseEntity<DependentsDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody DependentsDTO dependentDto){
 	
 	if(!dependentService.isExists(id)) {

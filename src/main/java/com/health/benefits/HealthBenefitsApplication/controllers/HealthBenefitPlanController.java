@@ -99,7 +99,7 @@ public class HealthBenefitPlanController{
 	     
 	     	
 	
-	@PatchMapping(path ="{/id}")
+	@PatchMapping(path ="/{id}")
 	public ResponseEntity<HealthBenefitPlanDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody HealthBenefitPlanDTO healthPlanDto){
 		
 		if(!healthBenefitPlanService.isExists(id)) {

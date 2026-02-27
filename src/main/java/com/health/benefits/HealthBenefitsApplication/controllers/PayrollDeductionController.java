@@ -109,7 +109,7 @@ public ResponseEntity<PayrollDeductionDTO> fullUpdatePayrollDeduction(@PathVaria
     
     	
 
-@PatchMapping(path ="{/id}")
+@PatchMapping(path ="/{id}")
 public ResponseEntity<PayrollDeductionDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody PayrollDeductionDTO payrollDeductionDto){
 	
 	if(!payrollDeductionService.isExists(id)) {

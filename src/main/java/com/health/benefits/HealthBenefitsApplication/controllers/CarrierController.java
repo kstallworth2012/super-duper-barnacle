@@ -118,7 +118,7 @@ public class CarrierController{
 	     
 	     	
 	
-	@PatchMapping(path ="{/id}")
+	@PatchMapping(path ="/{id}")
 	public ResponseEntity<CarrierDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody CarrierDTO carrierDto){
 		
 		if(!carrierService.isExists(id)) {

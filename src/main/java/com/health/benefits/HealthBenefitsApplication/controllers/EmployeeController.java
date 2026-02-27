@@ -107,7 +107,7 @@ public class EmployeeController{
     
     	
 
-@PatchMapping(path ="{/id}")
+@PatchMapping(path ="/{id}")
 public ResponseEntity<EmployeeDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody EmployeeDTO employeeDto){
 	
 	if(!employeeService.isExists(id)) {

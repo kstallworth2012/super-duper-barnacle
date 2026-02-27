@@ -106,7 +106,7 @@ public ResponseEntity<EnrollmentDTO> fullUpdateEnrollment(@PathVariable("id") UU
     
     	
 
-@PatchMapping(path ="{/id}")
+@PatchMapping(path ="/{id}")
 public ResponseEntity<EnrollmentDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody EnrollmentDTO enrollmentDto){
 	
 	if(!enrollmentService.isExists(id)) {
