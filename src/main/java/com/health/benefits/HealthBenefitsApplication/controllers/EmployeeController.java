@@ -11,6 +11,8 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,7 +45,7 @@ public class EmployeeController{
 	@PostMapping(path="/new-employee")
 	public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO emp_app) {
 			EmployeeEntity employeeEntity = employeeMapper.mapFrom(emp_app);
-			EmployeeEntity savedEmployeeEntity = employeeService.createEmployee(null, employeeEntity);
+			EmployeeEntity savedEmployeeEntity = employeeService.createEmployee(employeeEntity);
 			
 			return new ResponseEntity<>(employeeMapper.mapTo(savedEmployeeEntity), HttpStatus.CREATED);
 	}
@@ -61,11 +63,11 @@ public class EmployeeController{
     
     
     	//PAGEABLE
-	@GetMapping(path="/")
-	public Page<EmployeeDTO> listEmployees(Pageable page){
-		Page<Applicant> employees = employeeService.findAll(page);
-		return employees.map(employeeMapper::mapTo);
-	}
+//	@GetMapping(path="/")
+//	public Page<EmployeeDTO> listEmployees(Pageable page){
+//		Page<EmployeeEntity> employees = employeeService.findAll(page);
+//		return employees.map(employeeMapper::mapTo);
+//	}
     
     
     
@@ -94,7 +96,7 @@ public class EmployeeController{
 				
 			}
 			
-			empDto.setId(id);
+			empDto.setEmp_id(id);
 			EmployeeEntity employeeEntity = employeeMapper.mapFrom(empDto);
 			EmployeeEntity savedEmployeeEntity = employeeService.save(employeeEntity);
 			

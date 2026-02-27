@@ -48,7 +48,7 @@ public class PayrollDeductionController{
     @PostMapping(path="/new-payroll-deduction")
 	public ResponseEntity<PayrollDeductionDTO> createPayrollDeduction(@RequestBody PayrollDeductionDTO _app) {
 			PayrollDeductionEntity payrollDeductionEntity = payrollDeductionMapper.mapFrom(_app);
-			PayrollDeductionEntity savedPayrollDeductionEntity = payrollDeductionService.createPayrollDeduction(null, payrollDeductionEntity);
+			PayrollDeductionEntity savedPayrollDeductionEntity = payrollDeductionService.createPayrollDeduction(payrollDeductionEntity);
 			
 			return new ResponseEntity<>(payrollDeductionMapper.mapTo(savedPayrollDeductionEntity), HttpStatus.CREATED);
 	}
@@ -67,12 +67,12 @@ public class PayrollDeductionController{
     
     
     	//PAGEABLE
-	@GetMapping(path="/")
-	public Page<PayrollDeductionDTO> listPayrollDeductions(Pageable page){
-		Page<PayrollDeductionEntity> payrollDeductions = payrollDeductionService.findAll(page);
-		return payrollDeductions.map(payrollDeductionMapper::mapTo);
-	}
-    
+//	@GetMapping(path="/")
+//	public Page<PayrollDeductionDTO> listPayrollDeductions(Pageable page){
+//		Page<PayrollDeductionEntity> payrollDeductions = payrollDeductionService.findAll(page);
+//		return payrollDeductions.map(payrollDeductionMapper::mapTo);
+//	}
+//    
 
     // Read One
     @GetMapping("/{deduction_id}")
@@ -96,7 +96,7 @@ public ResponseEntity<PayrollDeductionDTO> fullUpdatePayrollDeduction(@PathVaria
 		
 	}
 	
-	payrollDto.setId(id);
+	payrollDto.setDeduction_id(id);
 	PayrollDeductionEntity payrollDeductionEntity = payrollDeductionMapper.mapFrom(payrollDto);
 	PayrollDeductionEntity savedPayrollDeductionEntity = payrollDeductionService.save(payrollDeductionEntity);
 	

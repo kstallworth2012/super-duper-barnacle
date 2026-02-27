@@ -44,7 +44,7 @@ public class EOIController{
     @PostMapping(path="/new-eoi")
 	public ResponseEntity<EoiDTO> createEOI(@RequestBody EoiDTO _app) {
 			EOIEntity eoiEntity = eoiMapper.mapFrom(_app);
-			EOIEntity savedEOIEntity = eoiService.createEOI(null, eoiEntity);
+			EOIEntity savedEOIEntity = eoiService.createEOI(eoiEntity);
 			
 			return new ResponseEntity<>(eoiMapper.mapTo(savedEOIEntity), HttpStatus.CREATED);
 	}
@@ -73,11 +73,11 @@ public class EOIController{
     
     
     	//PAGEABLE
-	@GetMapping(path="/")
-	public Page<EoiDTO> listEOIs(Pageable page){
-		Page<EOIEntity> eois = eoiService.findAll(page);
-		return eois.map(eoiMapper::mapTo);
-	}
+//	@GetMapping(path="/")
+//	public Page<EoiDTO> listEOIs(Pageable page){
+//		Page<EOIEntity> eois = eoiService.findAll(page);
+//		return eois.map(eoiMapper::mapTo);
+//	}
      
 @PutMapping(path="/{id}")
 public ResponseEntity<EoiDTO> fullUpdateEOI(@PathVariable("id") UUID id, @RequestBody EoiDTO eoiDto){
@@ -87,7 +87,7 @@ public ResponseEntity<EoiDTO> fullUpdateEOI(@PathVariable("id") UUID id, @Reques
 		
 	}
 	
-	eoiDto.setId(id);
+	eoiDto.setEod_id(id);
 	EOIEntity eoiEntity = eoiMapper.mapFrom(eoiDto);
 	EOIEntity savedEOIEntity = eoiService.save(eoiEntity);
 	

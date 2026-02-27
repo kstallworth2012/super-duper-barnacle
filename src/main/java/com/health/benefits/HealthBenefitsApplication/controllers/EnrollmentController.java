@@ -47,7 +47,7 @@ public class EnrollmentController{
 	@PostMapping(path="/new-enrollment")
 	public ResponseEntity<EnrollmentDTO> createEnrollment(@RequestBody EnrollmentDTO _app) {
 			EnrollmentEntity enrollmentEntity = enrollmentMapper.mapFrom(_app);
-			EnrollmentEntity savedEnrollmentEntity = enrollmentService.createEnrollment(null, enrollmentEntity);
+			EnrollmentEntity savedEnrollmentEntity = enrollmentService.createEnrollment(enrollmentEntity);
 			
 			return new ResponseEntity<>(enrollmentMapper.mapTo(savedEnrollmentEntity), HttpStatus.CREATED);
 	}
@@ -77,11 +77,11 @@ public class EnrollmentController{
     
     
     	//PAGEABLE
-	@GetMapping(path="/")
-	public Page<EnrollmentDTO> listEnrollments(Pageable page){
-		Page<EnrollmentEntity> enrollments = enrollmentService.findAll(page);
-		return enrollments.map(enrollmentMapper::mapTo);
-	}
+//	@GetMapping(path="/")
+//	public Page<EnrollmentDTO> listEnrollments(Pageable page){
+//		Page<EnrollmentEntity> enrollments = enrollmentService.findAll(page);
+//		return enrollments.map(enrollmentMapper::mapTo);
+//	}
     
     
     
@@ -94,7 +94,7 @@ public ResponseEntity<EnrollmentDTO> fullUpdateEnrollment(@PathVariable("id") UU
 		
 	}
 	
-	enrollmentDto.setId(id);
+	enrollmentDto.setEnrollment_id(id);
 	EnrollmentEntity enrollmentEntity = enrollmentMapper.mapFrom(enrollmentDto);
 	EnrollmentEntity savedEnrollmentEntity = enrollmentService.save(enrollmentEntity);
 	
@@ -133,7 +133,7 @@ public ResponseEntity<EnrollmentDTO> partialUpdate(@PathVariable("id") UUID id, 
     
     
  	@DeleteMapping(path="/{id}")
- 	public ResponseEntity<EnrollmentDTO> deleteEnrollment(@PathVariable("id") String id) {
+ 	public ResponseEntity<EnrollmentDTO> deleteEnrollment(@PathVariable("id") UUID id) {
  		
  		enrollmentService.delete(id);
  		

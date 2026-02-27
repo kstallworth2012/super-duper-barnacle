@@ -56,11 +56,11 @@ public class CarrierController{
 	     }
 	     
 	 	//PAGEABLE
-	 	@GetMapping(path="/")
-	 	public Page<CarrierDTO> listCarriers(Pageable page){
-	 		Page<CarrierEntity> Carriers = carrierService.findAll(page);
-	 		return Carriers.map(carrierMapper::mapTo);
-	 	}
+//	 	@GetMapping(path="/")
+//	 	public Page<CarrierDTO> listCarriers(Pageable page){
+//	 		Page<CarrierEntity> Carriers = carrierService.findAll(page);
+//	 		return Carriers.map(carrierMapper::mapTo);
+//	 	}
 	 	
 	     
 	     
@@ -87,10 +87,10 @@ public class CarrierController{
 	         /*
 	          * alternative 
 	          */
-	           if(!carrierService.isExists(id){
+	           if(!carrierService.isExists(id)){
 	           		return new ResponseEntity<>(HttpStatus.NOT_FOUND); 
 	           }
-	           carrierDTO.setId(id); 
+	           carrierDTO.setCarrier_id(id); 
 	           CarrierEntity carrierEntity = carrierMapper.mapFrom(carrierDTO); 
 	           CarrierEntity savedCarrierEntity = carrierService.save(carrierEntity); 
 	           return new ResponseEntity<>(carrierMapper.mapTo(savedCarrierEntity), HttpStatus.OK);    
@@ -119,7 +119,7 @@ public class CarrierController{
 	     	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<CarrierDTO> partialUpdate(@PathVariable("id") String id, @RequestBody CarrierDTO carrierDto){
+	public ResponseEntity<CarrierDTO> partialUpdate(@PathVariable("id") UUID id, @RequestBody CarrierDTO carrierDto){
 		
 		if(!carrierService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

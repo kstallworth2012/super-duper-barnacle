@@ -18,4 +18,5 @@ public interface CarrierService {
 		boolean isExists(UUID id);
 		CarrierEntity partialUpdate(UUID id, CarrierEntity _carrier);
 		void delete(UUID _id);
+		CarrierEntity save(CarrierEntity carrierEntity);
 }

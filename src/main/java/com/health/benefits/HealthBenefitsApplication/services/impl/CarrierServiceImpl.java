@@ -68,4 +68,10 @@ public class CarrierServiceImpl implements CarrierService {
 		carrierRepository.deleteById(_id);
 	}
 
+	@Override
+	public CarrierEntity save(CarrierEntity carrierEntity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

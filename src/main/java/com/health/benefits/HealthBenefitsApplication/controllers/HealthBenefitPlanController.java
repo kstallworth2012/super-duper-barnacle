@@ -46,7 +46,7 @@ public class HealthBenefitPlanController{
 	@PostMapping(path="/new-healthplan")
 	public ResponseEntity<HealthBenefitPlanDTO> createHealthBenefitPlan(@RequestBody HealthBenefitPlanDTO _app) {
 			HealthBenefitPlanEntity healthBenefitPlanEntity = healthBenefitPlanMapper.mapFrom(_app);
-			HealthBenefitPlanEntity savedHealthBenefitPlanEntity = healthBenefitPlanService.createApplicant(null, healthBenefitPlanEntity);
+			HealthBenefitPlanEntity savedHealthBenefitPlanEntity = healthBenefitPlanService.createHealthBenefitPlan(healthBenefitPlanEntity);
 			
 			return new ResponseEntity<>(healthBenefitPlanMapper.mapTo(savedHealthBenefitPlanEntity), HttpStatus.CREATED);
 	}
@@ -73,21 +73,21 @@ public class HealthBenefitPlanController{
 	  
 	   
 	   	//PAGEABLE
-	@GetMapping(path="/")
-	public Page<HealthBenefitPlanDTO> listHealthBenefitPlans(Pageable page){
-		Page<HealthBenefitPlanEntity> healthBenefitPlans = healthBenefitPlanService.findAll(page);
-		return healthBenefitPlans.map(healthBenefitPlanMapper::mapTo);
-	}  
+//	@GetMapping(path="/")
+//	public Page<HealthBenefitPlanDTO> listHealthBenefitPlans(Pageable page){
+//		Page<HealthBenefitPlanEntity> healthBenefitPlans = healthBenefitPlanService.findAll(page);
+//		return healthBenefitPlans.map(healthBenefitPlanMapper::mapTo);
+//	}  
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<HealthBenefitPlanDTO> fullUpdateHealthBenefitPlan(@PathVariable("id") String id, @RequestBody HealthBenefitPlanDTO healthBenefitPlanDto){
+	public ResponseEntity<HealthBenefitPlanDTO> fullUpdateHealthBenefitPlan(@PathVariable("id") UUID id, @RequestBody HealthBenefitPlanDTO healthBenefitPlanDto){
 		
 		if(!healthBenefitPlanService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		healthBenefitPlanDto.setId(id);
+		healthBenefitPlanDto.setPlan_id(id);
 		HealthBenefitPlanEntity healthBenefitPlanEntity = healthBenefitPlanMapper.mapFrom(healthBenefitPlanDto);
 		HealthBenefitPlanEntity savedhealthBenefitPlanEntity = healthBenefitPlanService.save(healthBenefitPlanEntity);
 		

@@ -49,12 +49,12 @@ public class DependentController{
    	 return dependents.stream().map(dependentsMapper::mapTo).collect(Collectors.toList());
     }
     
-	//PAGEABLE
-	@GetMapping(path="/")
-	public Page<DependentsDTO> listDependents(Pageable page){
-		Page<DependentsEntity> dependents = dependentService.findAll(page);
-		return dependents.map(dependentsMapper::mapTo);
-	}
+//	//PAGEABLE
+//	@GetMapping(path="/")
+//	public Page<DependentsDTO> listDependents(Pageable page){
+//		Page<DependentsEntity> dependents = dependentService.findAll(page);
+//		return dependents.map(dependentsMapper::mapTo);
+//	}
 
     // Read One
     @GetMapping("/{dependent_id}")
@@ -88,7 +88,7 @@ public ResponseEntity<DependentsDTO> fullUpdateDependent(@PathVariable("id") UUI
 		
 	}
 	
-	dependentsDto.setId(id);
+	dependentsDto.setDependent_id(id);
 	DependentsEntity dependentsEntity = dependentsMapper.mapFrom(dependentsDto);
 	DependentsEntity savedDependentsEntity = dependentService.save(dependentsEntity);
 	
