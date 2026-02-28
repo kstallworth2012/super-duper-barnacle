@@ -59,6 +59,36 @@ public class EnrollmentEntity{
 				    
 				    
 				    
+					public HealthBenefitPlanEntity getPlan_id() {
+						return plan_id;
+					}
+					public void setPlan_id(HealthBenefitPlanEntity plan_id) {
+						this.plan_id = plan_id;
+					}
+					public CoverageLE getCoverage() {
+						return coverage;
+					}
+					public void setCoverage(CoverageLE coverage) {
+						this.coverage = coverage;
+					}
+					public String getDependent() {
+						return dependent;
+					}
+					public void setDependent(String dependent) {
+						this.dependent = dependent;
+					}
+					public LocalDate getEnrollment_date() {
+						return enrollment_date;
+					}
+					public void setEnrollment_date(LocalDate enrollment_date) {
+						this.enrollment_date = enrollment_date;
+					}
+					public EnrollmentStatus getEnrollment_status() {
+						return enrollment_status;
+					}
+					public void setEnrollment_status(EnrollmentStatus enrollment_status) {
+						this.enrollment_status = enrollment_status;
+					}
 					public UUID getEnrollment_id() {
 						return enrollment_id;
 					}

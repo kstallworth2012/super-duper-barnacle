@@ -8,10 +8,8 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 
-import com.health.benefits.HealthBenefitsApplication.domain.entities.EmployeeEntity;
 import com.health.benefits.HealthBenefitsApplication.domain.entities.HealthBenefitPlanEntity;
 import com.health.benefits.HealthBenefitsApplication.repositories.HealthBenefitPlanRepository;
-import com.health.benefits.HealthBenefitsApplication.services.EmployeeService;
 import com.health.benefits.HealthBenefitsApplication.services.HealthBenefitPlanService;
 
 
@@ -59,7 +57,18 @@ public class HealthBenefitPlanServiceImpl implements HealthBenefitPlanService {
 		@Override
 		public HealthBenefitPlanEntity partialUpdate(UUID id, HealthBenefitPlanEntity hbp) {
 			// TODO Auto-generated method stub
-			return null;
+			hbp.setPlan_id(id);
+			
+			//find the entity
+			return healthBenefitPlanRepository.findById(id).map(existingHealthBenefitPlan -> {
+			
+				
+				//we can you use more data items
+				Optional.ofNullable(hbp.getPlan_type()).ifPresent(existingHealthBenefitPlan::setPlan_type);
+				
+				return healthBenefitPlanRepository.save(existingHealthBenefitPlan);
+			}).orElseThrow(() -> new RuntimeException("Health Plan is not there!"));
+			
 		}
 
 		@Override

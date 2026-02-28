@@ -60,7 +60,20 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 	@Override
 	public EnrollmentEntity partialUpdate(UUID enroll_id, EnrollmentEntity _enrollment) {
 		// TODO Auto-generated method stub
-		return null;
+		_enrollment.setEnrollment_id(enroll_id);
+		
+		
+		
+		return enrollmentRepository.findById(enroll_id).map(existingEnrollment -> {
+			
+			
+			Optional.ofNullable(_enrollment.getEnrollment_status()).ifPresent(existingEnrollment::setEnrollment_status);
+			
+			return enrollmentRepository.save(existingEnrollment);
+		}).orElseThrow(() -> new RuntimeException("Enrollment is not there!"));
+		
+	
+		
 	}
 
 	@Override

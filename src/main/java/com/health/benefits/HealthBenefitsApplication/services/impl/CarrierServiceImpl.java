@@ -59,7 +59,17 @@ public class CarrierServiceImpl implements CarrierService {
 	@Override
 	public CarrierEntity partialUpdate(UUID id, CarrierEntity _carrier) {
 		// TODO Auto-generated method stub
-		return null;
+		_carrier.setCarrier_id(id);
+				
+		
+		return carrierRepository.findById(id).map(existingCarrier -> {
+			
+			Optional.ofNullable(_carrier.getName()).ifPresent(existingCarrier::setName);
+			return carrierRepository.save(existingCarrier);
+		}).orElseThrow(() -> new RuntimeException("Carrier is not there!"));
+		
+
+		
 	}
 
 	@Override

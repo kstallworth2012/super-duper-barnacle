@@ -58,7 +58,17 @@ public class DependentsServiceImpl implements DependentsService {
 	@Override
 	public DependentsEntity partialUpdate(UUID _id, DependentsEntity _dependents) {
 		// TODO Auto-generated method stub
-		return null;
+		_dependents.setDependent_id(_id);
+			
+		  
+		 
+		
+		return dependentsRepository.findById(_id).map(existingDependents -> {
+			
+			Optional.ofNullable(_dependents.getName()).ifPresent(existingDependents::setName);
+			return dependentsRepository.save(existingDependents);
+		}).orElseThrow(() -> new RuntimeException("Dependents is not there!"));
+		
 	}
 
 	@Override

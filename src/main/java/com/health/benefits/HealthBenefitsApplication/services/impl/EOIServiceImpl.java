@@ -58,7 +58,15 @@ public class EOIServiceImpl implements EOIService {
 	@Override
 	public EOIEntity partialUpdate(UUID eoi_id, EOIEntity _eoi) {
 		// TODO Auto-generated method stub
-		return null;
+		_eoi.getEoi_id();
+		
+		return eoiRepository.findById(eoi_id).map(existingEOI -> {
+			
+			Optional.ofNullable(_eoi.getStatus()).ifPresent(existingEOI::setStatus);
+			return eoiRepository.save(existingEOI);
+		}).orElseThrow(() -> new RuntimeException("EOI is not there!"));
+		
+	
 	}
 
 	@Override

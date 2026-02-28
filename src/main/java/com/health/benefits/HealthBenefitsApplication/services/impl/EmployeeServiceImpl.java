@@ -78,7 +78,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public EmployeeEntity partialUpdate(UUID _id, EmployeeEntity _employee) {
 		// TODO Auto-generated method stub
-		return null;
+		_employee.setEmp_id(_id);
+
+		
+		return employeeRepository.findById(_id).map(existingEmployee -> {
+			
+			Optional.ofNullable(_employee.getCoverage()).ifPresent(existingEmployee::setCoverage);
+			return employeeRepository.save(existingEmployee);
+		}).orElseThrow(() -> new RuntimeException("Employee is not there!"));
+		
+
 	}
 
 

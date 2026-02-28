@@ -72,7 +72,19 @@ public class PayrollDeductionServiceImpl implements PayrollDeductionService {
 	@Override
 	public PayrollDeductionEntity partialUpdate(UUID payroll_id, PayrollDeductionEntity payrollDeduct) {
 		// TODO Auto-generated method stub
-		return null;
+		payrollDeduct.setDeduction_id(payroll_id);
+		
+		return payrollDeductionRepository.findById(payroll_id).map(existingPayrollDeduction ->{
+			
+			
+			//we can you use more data items
+			Optional.ofNullable(payrollDeduct.getDeduction_amount()).ifPresent(existingPayrollDeduction::setDeduction_amount);
+			Optional.ofNullable(payrollDeduct.getFrequency()).ifPresent(existingPayrollDeduction::setFrequency);
+
+			return payrollDeductionRepository.save(existingPayrollDeduction);
+		}).orElseThrow(() -> new RuntimeException("Payroll Deduction is not there!"));
+		
+		
 	}
 
 

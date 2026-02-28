@@ -49,6 +49,18 @@ public class PayrollDeductionEntity{
 			private LocalDate end_date;
 			
 			
+			public Double getDeduction_amount() {
+				return deduction_amount;
+			}
+			public void setDeduction_amount(Double deduction_amount) {
+				this.deduction_amount = deduction_amount;
+			}
+			public DeductionFrequency getFrequency() {
+				return frequency;
+			}
+			public void setFrequency(DeductionFrequency frequency) {
+				this.frequency = frequency;
+			}
 			public UUID getDeduction_id() {
 				return deduction_id;
 			}

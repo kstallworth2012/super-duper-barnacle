@@ -40,8 +40,17 @@ public class EOIEntity{
 				private String DocumentArr;  //need a list of documents here 
 				//is it this 
 				// List<String> documents; 
+				
+				
+				
 				public UUID getEoi_id() {
 					return eoi_id;
+				}
+				public EOD_Status getStatus() {
+					return status;
+				}
+				public void setStatus(EOD_Status status) {
+					this.status = status;
 				}
 				public void setEoi_id(UUID eoi_id) {
 					this.eoi_id = eoi_id;
