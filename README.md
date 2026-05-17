@@ -6,15 +6,15 @@ With this application a user can control Health Benefits selections
 ## Description
 
 An in-depth paragraph about your project and overview of use.
-Control features a of a employee health benefit plan such as:
-Carriers
-Medical\health Claims
-Enrollment
-EOI
-Health Benefit Plan
-Payroll Deductions
-Dependents
-Explaination of Benefits Documents
+# Purpose of the application is to Control features a of a employee health benefit plan such as:
+* Carriers
+* Medical\health Claims
+* Enrollment
+* EOI
+* Health Benefit Plan
+* Payroll Deductions
+* Dependents
+* Explaination of Benefits Documents
 
 ## Getting Started
 
